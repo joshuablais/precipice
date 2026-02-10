@@ -1,9 +1,8 @@
 // precipice/components/nav/config.go
+// precipice/components/nav/config.go
 package nav
 
 import (
-	"github.com/a-h/templ"
-	"github.com/joshuablais/precipice/components/button"
 	"os"
 )
 
@@ -13,15 +12,15 @@ type NavItem struct {
 }
 
 type AuthButton struct {
-	Label     string
-	Href      string
-	Variant   string
-	IsPrimary bool
+	Label   string
+	Href    string
+	Variant string
 }
 
 type LogoConfig struct {
-	DesktopURL string // Logo for main nav
-	MobileURL  string // Logo for mobile menu (can be same or different)
+	Href       string // Where the logo links to
+	DesktopURL string // Logo image for main nav
+	MobileURL  string // Logo image for mobile menu
 	AltText    string
 }
 
@@ -31,30 +30,6 @@ type NavConfig struct {
 	Logo        LogoConfig
 }
 
-// ToButtonArgs converts AuthButton config to button.ButtonArgs
-// with additional attributes for context (desktop vs mobile)
-func (ab AuthButton) ToButtonArgs(additionalClass string, additionalAttrs templ.Attributes) button.ButtonArgs {
-	attrs := templ.Attributes{
-		"href": ab.Href,
-	}
-
-	// Merge additional attributes
-	if additionalAttrs != nil {
-		for k, v := range additionalAttrs {
-			attrs[k] = v
-		}
-	}
-
-	return button.ButtonArgs{
-		Variant:    ab.Variant,
-		Size:       "lg",
-		AsChild:    true,
-		Class:      additionalClass,
-		Attributes: attrs,
-	}
-}
-
-// getEnvOrDefault returns environment variable value or default
 func getEnvOrDefault(key, defaultValue string) string {
 	if value := os.Getenv(key); value != "" {
 		return value
@@ -73,19 +48,18 @@ func GetNavConfig() NavConfig {
 		},
 		AuthButtons: []AuthButton{
 			{
-				Label:     "Log In",
-				Href:      "/login",
-				Variant:   "navlink",
-				IsPrimary: false,
+				Label:   "Log In",
+				Href:    "/login",
+				Variant: "ghost",
 			},
 			{
-				Label:     "Sign Up",
-				Href:      "/register",
-				Variant:   "secondary",
-				IsPrimary: true,
+				Label:   "Sign Up",
+				Href:    "/register",
+				Variant: "primary",
 			},
 		},
 		Logo: LogoConfig{
+			Href: "/",
 			DesktopURL: getEnvOrDefault(
 				"NAV_LOGO_DESKTOP_URL",
 				"https://cella.b-cdn.net/Revere/revere_logo2.png",
