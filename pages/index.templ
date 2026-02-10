@@ -1,7 +1,10 @@
 // pages/index.templ
 package pages
 
-import "github.com/joshuablais/precipice/components/button"
+import (
+	"github.com/joshuablais/precipice/components/button"
+	"github.com/joshuablais/precipice/components/input"
+)
 
 templ Index() {
 	@Layout("Home") {
@@ -25,8 +28,15 @@ templ Index() {
 					Link
 				}
 				// Note this is how to use a button with endpoint
-				@button.Button(button.Props{Href: "/dashboard"}) { Dashboard }
-
+				@button.Button(button.Props{Href: "/dashboard"}) {
+					Dashboard 
+				}
+				@button.Button(button.Props{
+					Variant: button.VariantPrimary,
+					Href:    "/dashboard",
+				}) {
+					Dashboard 
+				}
 			</div>
 			<div style="display: flex; gap: 0.5rem; margin-top: 1rem;">
 				@button.Button(button.Props{Size: button.SizeSm}) {
@@ -50,6 +60,8 @@ templ Index() {
 					Submit
 				}
 			</div>
+			@components.Input("email", "email", "you@example.com")
+			@components.InputWithLabel("email", "email", "Email", "you@example.com")
 		</section>
 	}
 }

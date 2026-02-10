@@ -63,7 +63,7 @@ func (p Props) classes() string {
 
 templ Button(props Props) {
 	{{ p := props.withDefaults() }}
-	if p.Href != "" {		
+	if p.Href != "" {
 		<a
 			href={ templ.SafeURL(p.Href) }
 			class={ props.classes() }
