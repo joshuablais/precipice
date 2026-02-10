@@ -31,6 +31,7 @@ type Props struct {
 	BtnType  string
 	ID       string
 	Name     string
+	Href     string
 	Attrs    templ.Attributes
 }
 
@@ -62,20 +63,33 @@ func (p Props) classes() string {
 
 templ Button(props Props) {
 	{{ p := props.withDefaults() }}
-	<button
-		type={ p.BtnType }
-		class={ props.classes() }
-		if props.ID != "" {
-			id={ props.ID }
-		}
-		if props.Name != "" {
-			name={ props.Name }
-		}
-		disabled?={ props.Disabled }
-		{ props.Attrs... }
-	>
-		{ children... }
-	</button>
+	if p.Href != "" {		
+		<a
+			href={ templ.SafeURL(p.Href) }
+			class={ props.classes() }
+			if props.ID != "" {
+				id={ props.ID }
+			}
+			{ props.Attrs... }
+		>
+			{ children... }
+		</a>
+	} else {
+		<button
+			type={ p.BtnType }
+			class={ props.classes() }
+			if props.ID != "" {
+				id={ props.ID }
+			}
+			if props.Name != "" {
+				name={ props.Name }
+			}
+			disabled?={ props.Disabled }
+			{ props.Attrs... }
+		>
+			{ children... }
+		</button>
+	}
 }
 
 templ Submit(props Props) {

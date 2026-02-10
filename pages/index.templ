@@ -24,6 +24,9 @@ templ Index() {
 				@button.Button(button.Props{Variant: button.VariantLink}) {
 					Link
 				}
+				// Note this is how to use a button with endpoint
+				@button.Button(button.Props{Href: "/dashboard"}) { Dashboard }
+
 			</div>
 			<div style="display: flex; gap: 0.5rem; margin-top: 1rem;">
 				@button.Button(button.Props{Size: button.SizeSm}) {
