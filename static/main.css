@@ -32,6 +32,7 @@
   --leading-normal: 1.5;
   --leading-relaxed: 1.75;
 
+  /*Pallate*/
   --background: hsl(40 25% 93%);
   --foreground: hsl(210 11% 11%);
   --primary: hsl(210 11% 11%);
@@ -51,6 +52,22 @@
   /* Shadows */
   --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
   --shadow-md: 0 4px 6px rgba(0,0,0,0.07);
+}
+
+.dark {
+  --background: hsl(210 11% 11%);
+  --foreground: hsl(40 25% 93%);
+  --primary: hsl(40 25% 93%);
+  --primary-foreground: hsl(210 11% 11%);
+  --secondary: hsl(210 13% 18%);
+  --secondary-foreground: hsl(40 25% 93%);
+  --muted: hsl(210 10% 25%);
+  --muted-foreground: hsl(37 25% 75%);
+  --accent: hsl(37 34% 77%);
+  --accent-foreground: hsl(210 11% 11%);
+  --border: hsl(210 13% 18%);
+  --destructive: hsl(354 42% 72%);
+  --destructive-foreground: hsl(210 11% 11%);
 }
 
 /* Dark mode - toggle via class or media query */
@@ -78,7 +95,7 @@ body {
   font-size: var(--text-base);
   line-height: var(--leading-normal);
   color: var(--fg);
-  background: var(--background);
+  background: var(--primary);
   -webkit-font-smoothing: antialiased;
 }
 
@@ -125,40 +142,6 @@ body {
   padding: var(--space-6);
 }
 
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--space-2);
-  padding: var(--space-2) var(--space-4);
-  font-size: var(--text-sm);
-  font-weight: var(--font-medium);
-  border-radius: var(--radius-sm);
-  border: none;
-  cursor: pointer;
-  transition: background 0.15s ease;
-}
-
-.btn-primary {
-  background: var(--accent);
-  color: white;
-}
-
-.btn-primary:hover {
-  background: var(--accent-hover);
-}
-
-/* ============================================
-   UTILITIES (sparingly)
-   ============================================ */
-
-.text-muted { color: var(--fg-muted); }
-.text-sm { font-size: var(--text-sm); }
-.text-lg { font-size: var(--text-lg); }
-
-.mt-4 { margin-top: var(--space-4); }
-.mb-4 { margin-bottom: var(--space-4); }
-
 /* ============================================
    BUTTON
    ============================================ */
@@ -202,10 +185,10 @@ body {
 .btn--default:hover { background: var(--bg); }
 
 .btn--primary {
-  background: var(--accent);
-  color: white;
+  background: var(--primary);
+  color: var(--priamry-foreground);
 }
-.btn--primary:hover { background: var(--accent-hover); }
+.btn--primary:hover { background: var(--accent); }
 
 .btn--destructive {
   background: var(--destructive);
@@ -235,3 +218,15 @@ body {
   padding: 0;
 }
 .btn--link:hover { text-decoration-thickness: 2px; }
+
+/* ============================================
+   UTILITIES (sparingly)
+   ============================================ */
+
+.text-muted { color: var(--fg-muted); }
+.text-sm { font-size: var(--text-sm); }
+.text-lg { font-size: var(--text-lg); }
+
+.mt-4 { margin-top: var(--space-4); }
+.mb-4 { margin-bottom: var(--space-4); }
+
