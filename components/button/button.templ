@@ -1,0 +1,86 @@
+// button with datastar integration
+package button
+
+import "strings"
+
+type Variant string
+
+const (
+	VariantDefault     Variant = "default"
+	VariantPrimary     Variant = "primary"
+	VariantDestructive Variant = "destructive"
+	VariantOutline     Variant = "outline"
+	VariantGhost       Variant = "ghost"
+	VariantLink        Variant = "link"
+)
+
+type Size string
+
+const (
+	SizeMd   Size = "md"
+	SizeSm   Size = "sm"
+	SizeLg   Size = "lg"
+	SizeIcon Size = "icon"
+)
+
+type Props struct {
+	Variant  Variant
+	Size     Size
+	Class    string
+	Disabled bool
+	BtnType  string
+	ID       string
+	Name     string
+	Attrs    templ.Attributes
+}
+
+func (p Props) withDefaults() Props {
+	if p.Variant == "" {
+		p.Variant = VariantDefault
+	}
+	if p.Size == "" {
+		p.Size = SizeMd
+	}
+	if p.BtnType == "" {
+		p.BtnType = "button"
+	}
+	return p
+}
+
+func (p Props) classes() string {
+	p = p.withDefaults()
+	c := []string{
+		"btn",
+		"btn--" + string(p.Variant),
+		"btn--" + string(p.Size),
+	}
+	if p.Class != "" {
+		c = append(c, p.Class)
+	}
+	return strings.Join(c, " ")
+}
+
+templ Button(props Props) {
+	{{ p := props.withDefaults() }}
+	<button
+		type={ p.BtnType }
+		class={ props.classes() }
+		if props.ID != "" {
+			id={ props.ID }
+		}
+		if props.Name != "" {
+			name={ props.Name }
+		}
+		disabled?={ props.Disabled }
+		{ props.Attrs... }
+	>
+		{ children... }
+	</button>
+}
+
+templ Submit(props Props) {
+	{{ props.BtnType = "submit" }}
+	@Button(props) {
+		{ children... }
+	}
+}
