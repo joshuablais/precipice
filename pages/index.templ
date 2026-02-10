@@ -3,6 +3,7 @@ package pages
 
 import (
 	"github.com/joshuablais/precipice/components/button"
+	"github.com/joshuablais/precipice/components/form"
 	"github.com/joshuablais/precipice/components/input"
 )
 
@@ -60,8 +61,17 @@ templ Index() {
 					Submit
 				}
 			</div>
-			@components.Input("email", "email", "you@example.com")
-			@components.InputWithLabel("email", "email", "Email", "you@example.com")
+			@input.Input("email", "email", "you@example.com")
+			@input.InputWithLabel("email", "email", "Email", "you@example.com")
+			@form.FormGroup("email", "Email") {
+				@input.Input("email", "email", "you@example.com")
+			}
+			@form.FormGroupWithHint("password", "Password", "Must be at least 8 characters") {
+				@input.Input("password", "password", "")
+			}
+@form.FormGroupWithError("username", "Username", "Username is required") {
+  <input type="text" name="username" id="username" class="error"/>
+}
 		</section>
 	}
 }

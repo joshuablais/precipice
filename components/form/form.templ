@@ -1,0 +1,27 @@
+// components/form.templ
+package form
+
+templ FormGroup(name, label string) {
+	<div class="form-group">
+		<label for={ name }>{ label }</label>
+		{ children... }
+	</div>
+}
+
+templ FormGroupWithHint(name, label, hint string) {
+	<div class="form-group">
+		<label for={ name }>{ label }</label>
+		{ children... }
+		<span class="form-hint">{ hint }</span>
+	</div>
+}
+
+templ FormGroupWithError(name, label, errorMsg string) {
+	<div class="form-group">
+		<label for={ name }>{ label }</label>
+		{ children... }
+		if errorMsg != "" {
+			<span class="form-error">{ errorMsg }</span>
+		}
+	</div>
+}
