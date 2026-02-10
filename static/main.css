@@ -32,14 +32,16 @@
   --leading-normal: 1.5;
   --leading-relaxed: 1.75;
 
-  /* Your palette - adjust to taste */
-  --fg: #1a1a1a;
-  --fg-muted: #6b6b6b;
-  --bg: #fafafa;
-  --bg-raised: #ffffff;
-  --border: #e5e5e5;
-  --accent: #2563eb;
-  --accent-hover: #1d4ed8;
+  --background: hsl(40 25% 93%);
+  --foreground: hsl(210 11% 11%);
+  --primary: hsl(210 11% 11%);
+  --primary-foreground: hsl(40 25% 93%);
+  --secondary: hsl(37 20% 85%);
+  --muted: hsl(37 25% 75%);
+  --muted-foreground: hsl(210 13% 18%);
+  --accent: hsl(37 34% 77%);
+  --border: hsl(37 20% 85%);
+  --destructive: hsl(354 42% 72%);
 
   /* Radii */
   --radius-sm: 0.25rem;
@@ -76,7 +78,7 @@ body {
   font-size: var(--text-base);
   line-height: var(--leading-normal);
   color: var(--fg);
-  background: var(--bg);
+  background: var(--background);
   -webkit-font-smoothing: antialiased;
 }
 
