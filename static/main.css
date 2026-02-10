@@ -1,0 +1,160 @@
+/* ============================================
+   PRECIPICE DESIGN SYSTEM
+   ============================================ */
+
+:root {
+  /* Spacing scale (8px base - the only number you need) */
+  --space-1: 0.25rem;   /* 4px */
+  --space-2: 0.5rem;    /* 8px */
+  --space-3: 0.75rem;   /* 12px */
+  --space-4: 1rem;      /* 16px */
+  --space-6: 1.5rem;    /* 24px */
+  --space-8: 2rem;      /* 32px */
+  --space-12: 3rem;     /* 48px */
+  --space-16: 4rem;     /* 64px */
+
+  /* Typography scale (1.25 ratio - minor third) */
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.25rem;
+  --text-xl: 1.563rem;
+  --text-2xl: 1.953rem;
+  --text-3xl: 2.441rem;
+
+  /* Weights */
+  --font-normal: 400;
+  --font-medium: 500;
+  --font-bold: 700;
+
+  /* Line heights */
+  --leading-tight: 1.25;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.75;
+
+  /* Your palette - adjust to taste */
+  --fg: #1a1a1a;
+  --fg-muted: #6b6b6b;
+  --bg: #fafafa;
+  --bg-raised: #ffffff;
+  --border: #e5e5e5;
+  --accent: #2563eb;
+  --accent-hover: #1d4ed8;
+
+  /* Radii */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 1rem;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+  --shadow-md: 0 4px 6px rgba(0,0,0,0.07);
+}
+
+/* Dark mode - toggle via class or media query */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --fg: #e5e5e5;
+    --fg-muted: #a3a3a3;
+    --bg: #0a0a0a;
+    --bg-raised: #171717;
+    --border: #262626;
+  }
+}
+
+/* ============================================
+   RESET (minimal, surgical)
+   ============================================ */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+body {
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: var(--text-base);
+  line-height: var(--leading-normal);
+  color: var(--fg);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ============================================
+   LAYOUT PRIMITIVES
+   ============================================ */
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--stack-gap, var(--space-4));
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: var(--row-gap, var(--space-4));
+}
+
+.cluster {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--cluster-gap, var(--space-2));
+}
+
+.center {
+  display: grid;
+  place-items: center;
+}
+
+.container {
+  width: min(100% - var(--space-8), 65rem);
+  margin-inline: auto;
+}
+
+/* ============================================
+   COMPONENTS (add as needed, not before)
+   ============================================ */
+
+.card {
+  background: var(--bg-raised);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: var(--space-6);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-4);
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  border-radius: var(--radius-sm);
+  border: none;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: white;
+}
+
+.btn-primary:hover {
+  background: var(--accent-hover);
+}
+
+/* ============================================
+   UTILITIES (sparingly)
+   ============================================ */
+
+.text-muted { color: var(--fg-muted); }
+.text-sm { font-size: var(--text-sm); }
+.text-lg { font-size: var(--text-lg); }
+
+.mt-4 { margin-top: var(--space-4); }
+.mb-4 { margin-bottom: var(--space-4); }
+
+/* Only add utilities when you've used them 3+ times */
