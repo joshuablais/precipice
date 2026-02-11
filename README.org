@@ -10,3 +10,21 @@ This Framework uses go-templ, datastar, and CSS to create a full user experience
 
 ** Roadmap
 *** TODO Components to build out
+**** TODO Form
+**** TODO cards
+**** TODO FAQ (Accordion)
+**** TODO dropdown (nav)
+**** TODO Alert
+**** TODO dialogue (modal)
+**** TODO spinner
+**** TODO progress bar
+**** TODO toast
+**** TODO drawer (modal from bottom/side etc.)
+**** TODO radio group
+**** TODO checkbox
+**** TODO form dropdown
+**** TODO table
+**** TODO image
+**** TODO lightbox
+**** TODO carousel
+**** TODO slider
