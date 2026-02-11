@@ -4,7 +4,7 @@ generate:
 
 # Run once
 run: generate
-    go run main.go
+    go run cmd/main.go
 
 # Live reload (actual hot reloading)
 dev:
