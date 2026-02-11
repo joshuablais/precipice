@@ -7,8 +7,17 @@ This Framework uses go-templ, datastar, and Vanilla CSS to create a full user ex
 CSS has come a long way in the past 5 years, to the point in which we can replace many JS actions with pure CSS.  That is the way.
 
 ** Components
+*** Button
+**** Variants
+- Default
+- Primary
+- Ghost
+- Destructive
+- Outline
+- Link
+*** Navbar
+**** Theme switcher
 ** Structure
-
 
 ** Roadmap
 *** TODO Components to build out
