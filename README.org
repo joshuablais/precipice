@@ -2,7 +2,9 @@
 
 Precipice - A Final UI Framework
 
-This Framework uses go-templ, datastar, and CSS to create a full user experience. No JS, no BS.
+This Framework uses go-templ, datastar, and Vanilla CSS to create a full user experience. No JS, no BS.
+
+CSS has come a long way in the past 5 years, to the point in which we can replace many JS actions with pure CSS.  That is the way.
 
 ** Components
 ** Structure
