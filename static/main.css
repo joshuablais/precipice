@@ -150,6 +150,7 @@ body {
   border-radius: var(--radius-sm);
   cursor: pointer;
   transition: background 0.15s ease, border-color 0.15s ease;
+  text-decoration: none;
 }
 
 .btn:focus-visible {
@@ -208,7 +209,9 @@ body {
   /* text-underline-offset: 4px; */
   height: auto;
   padding: 0;
+  text-decoration-line: underline;
 }
+
 .btn--link:hover { text-decoration-thickness: 2px; }
 
 /* ============================================
