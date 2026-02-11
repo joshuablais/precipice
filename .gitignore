@@ -4,7 +4,3 @@
 tmp/
 
 /assets/*
-
-node_modules/*
-
-*_templ.go
