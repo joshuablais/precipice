@@ -15,7 +15,7 @@ func Routes(mux *http.ServeMux) {
 
 	// Authentication routes
 	// mux.HandleFunc("GET /register", page(authentication.SignupPage))
-	// mux.HandleFunc("GET /login", page(public.LoginPage))
+	mux.HandleFunc("GET /login", page(pages.LoginPage()))
 
 	// // Blog routes
 	// mux.HandleFunc("GET /blog", BlogIndexHandler(cfg))

@@ -9,7 +9,7 @@ import "github.com/a-h/templ"
 import templruntime "github.com/a-h/templ/runtime"
 
 import (
-	"github.com/your-module/components/button" // adjust import path
+	"github.com/joshuablais/precipice/components/button"
 	"os"
 )
 
