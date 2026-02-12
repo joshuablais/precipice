@@ -1,10 +1,8 @@
-// footer.templ
-package footer 
+package footer
 
 import (
 	"fmt"
 	"github.com/joshuablais/precipice/components/form"
-	"os"
 	"time"
 )
 
@@ -13,172 +11,81 @@ type FooterLink struct {
 	Href  string
 }
 
-func getLogo() string {
-	logo := os.Getenv("ICON_URL")
-	if logo == "" {
+type FooterSection struct {
+	Title string
+	Links []FooterLink
+}
+
+type NewsletterProps struct {
+	Title       string
+	Description string
+}
+
+type FooterProps struct {
+	Logo        string
+	CompanyName string
+	Year        int // 0 = use current year
+	Sections    []FooterSection
+	Newsletter  NewsletterProps
+	BottomLinks []FooterLink
+	ShowStatus  bool
+	StatusHref  string
+}
+
+func (p FooterProps) resolvedYear() int {
+	if p.Year == 0 {
+		return time.Now().Year()
+	}
+	return p.Year
+}
+
+func (p FooterProps) resolvedLogo() string {
+	if p.Logo == "" {
 		return "/static/logo.svg"
 	}
-	return logo
+	return p.Logo
 }
 
-func getCurrentYear() int {
-	return time.Now().Year()
-}
-
-func getSolutions() []FooterLink {
-	return []FooterLink{
-		{Label: "Sell a Home", Href: "#"},
-		{Label: "Buy a Home", Href: "/buy"},
-		{Label: "Marketing", Href: "/marketing"},
-		{Label: "Paperwork Automation", Href: "https://maisonos.com"},
-		{Label: "Property Management", Href: "https://reveremgmt.com"},
-	}
-}
-
-func getSupport() []FooterLink {
-	return []FooterLink{
-		{Label: "Pricing", Href: "#pricing"},
-		{Label: "Documentation", Href: "#"},
-		{Label: "Guides", Href: "#"},
-		{Label: "Status", Href: "#"},
-	}
-}
-
-func getCompany() []FooterLink {
-	return []FooterLink{
-		{Label: "About", Href: "https://reverehome.ca/about"},
-		{Label: "Blog", Href: "#"},
-		{Label: "Jobs", Href: "#"},
-		{Label: "Contact", Href: "/contact"},
-		{Label: "Partners", Href: "#"},
-	}
-}
-
-func getLegal() []FooterLink {
-	return []FooterLink{
-		{Label: "Privacy", Href: "/privacy"},
-		{Label: "Terms", Href: "#"},
-	}
-}
-
-templ Footer() {
-	<footer class="bg-primary">
-		<div class="mx-auto max-w-7xl px-6 pb-8 pt-16 sm:pt-24 lg:px-8 lg:pt-32">
-			<div class="xl:grid xl:grid-cols-3 xl:gap-8">
-				<a href="https://reverehome.ca">
-					<img
-						src={ getLogo() }
-						alt="Revere"
-						width="55"
-						height="55"
-						class="h-12 opacity-95 hover:opacity-100 transition-opacity duration-250"
-					/>
-				</a>
-				<div class="mt-16 grid grid-cols-2 gap-8 xl:col-span-2 xl:mt-0">
-					<div class="md:grid md:grid-cols-2 md:gap-8">
-						<div>
-							<h3 class="text-xs uppercase tracking-wider font-medium text-accent">Solutions</h3>
-							<ul class="mt-6 space-y-4">
-								for _, item := range getSolutions() {
-									<li>
-										<a
-											href={ item.Href }
-											class="text-sm text-primary-foreground hover:text-accent transition-colors duration-250"
-										>
-											{ item.Label }
-										</a>
-									</li>
-								}
-							</ul>
-						</div>
-						<div class="mt-10 md:mt-0">
-							<h3 class="text-xs uppercase tracking-wider font-medium text-accent">Support</h3>
-							<ul class="mt-6 space-y-4">
-								for _, item := range getSupport() {
-									<li>
-										<a
-											href={ item.Href }
-											class="text-sm text-primary-foreground hover:text-accent transition-colors duration-250"
-										>
-											{ item.Label }
-										</a>
-									</li>
-								}
-							</ul>
-						</div>
+templ Footer(props FooterProps) {
+	<footer class="footer">
+		<div class="footer__container">
+			<div class="footer__grid">
+				for _, section := range props.Sections {
+					<div class="footer__section">
+						<h3 class="footer__section-title">{ section.Title }</h3>
+						<ul class="footer__link-list">
+							for _, link := range section.Links {
+								<li>
+									<a class="footer__link" href={ templ.SafeURL(link.Href) }>{ link.Label }</a>
+								</li>
+							}
+						</ul>
 					</div>
-					<div class="md:grid md:grid-cols-2 md:gap-8">
-						<div>
-							<h3 class="text-xs uppercase tracking-wider font-medium text-accent">Company</h3>
-							<ul class="mt-6 space-y-4">
-								for _, item := range getCompany() {
-									<li>
-										<a
-											href={ item.Href }
-											class="text-sm text-primary-foreground hover:text-accent transition-colors duration-250"
-										>
-											{ item.Label }
-										</a>
-									</li>
-								}
-							</ul>
-						</div>
-						<div class="mt-10 md:mt-0">
-							<h3 class="text-xs uppercase tracking-wider font-medium text-accent">Legal</h3>
-							<ul class="mt-6 space-y-4">
-								for _, item := range getLegal() {
-									<li>
-										<a
-											href={ item.Href }
-											class="text-sm text-primary-foreground hover:text-accent transition-colors duration-250"
-										>
-											{ item.Label }
-										</a>
-									</li>
-								}
-							</ul>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- Newsletter Section -->
-			<div class="mt-16 border-t border-primary-foreground pt-8 sm:mt-20 lg:mt-24 lg:flex lg:items-start lg:justify-between lg:gap-8">
-				<!-- Column 1: Content -->
-				<div class="lg:flex-1">
-					<h3 class="text-xs uppercase tracking-wider font-medium text-accent">Subscribe to our newsletter</h3>
-					<p class="mt-4 mb-4 text-sm text-primary-foreground">
-						The latest news, articles, and resources, sent to your inbox weekly.
-					</p>
-				</div>
-				<!-- Column 2: Form -->
-				<div class="lg:w-96">
+				}
+				<div class="footer__newsletter">
+					<h3 class="footer__section-title">{ props.Newsletter.Title }</h3>
+					<p class="footer__newsletter-desc">{ props.Newsletter.Description }</p>
 					@form.SubscribeForm()
 				</div>
 			</div>
-			<!-- Footer Bottom Section -->
-			<div class="mt-8 border-t border-primary-foreground pt-8">
-				<div class="flex flex-col md:flex-row md:items-center md:justify-between">
-					<p class="text-xs text-primary-foreground">
-						&copy; { fmt.Sprintf("%d", getCurrentYear()) } Revere. All rights reserved
+			<div class="footer__bottom">
+				<div class="footer__bottom-left">
+					<img class="footer__logo" src={ props.resolvedLogo() } alt={ props.CompanyName }/>
+					<p class="footer__copyright">
+						{ fmt.Sprintf("© %d %s. All rights reserved", props.resolvedYear(), props.CompanyName) }
 					</p>
-					<div class="flex items-center gap-6 mt-4 md:mt-0">
-						<div class="flex items-center gap-6">
-							<a href="/terms" class="text-xs text-primary-foreground hover:text-accent transition-colors duration-250">
-								Terms of Use
-							</a>
-							<a href="/privacy" class="text-xs text-primary-foreground hover:text-accent transition-colors duration-250">
-								Privacy Policy
-							</a>
-							<a href="/gdpr" class="text-xs text-primary-foreground hover:text-accent transition-colors duration-250">
-								GDPR
-							</a>
-						</div>
-						<div class="flex items-center gap-2">
-							<div class="h-2 w-2 rounded-full bg-emerald-500"></div>
-							<span class="text-xs text-primary-foreground">System status</span>
-						</div>
-					</div>
 				</div>
+				<nav class="footer__bottom-links">
+					for _, link := range props.BottomLinks {
+						<a class="footer__bottom-link" href={ templ.SafeURL(link.Href) }>{ link.Label }</a>
+					}
+				</nav>
+				if props.ShowStatus {
+					<a class="footer__status-link" href={ templ.SafeURL(props.StatusHref) }>
+						<span class="footer__status-dot"></span>
+						System status
+					</a>
+				}
 			</div>
 		</div>
 	</footer>

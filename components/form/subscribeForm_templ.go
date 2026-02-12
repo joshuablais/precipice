@@ -31,7 +31,7 @@ func SubscribeForm() templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<form data-on-submit=\"@post('/subscribe')\" class=\"flex flex-col gap-4 sm:flex-row sm:items-start\">")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<form data-on-submit=\"@post('/subscribe')\" class=\"subscribe-form\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

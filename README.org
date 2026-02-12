@@ -39,3 +39,6 @@ CSS has come a long way in the past 5 years, to the point in which we can replac
 **** TODO lightbox
 **** TODO carousel
 **** TODO slider
+
+** Fixes
+*** TODO fix dark/light theme toggle icon

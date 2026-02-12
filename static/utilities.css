@@ -1,0 +1,10 @@
+/* ============================================
+   UTILITIES
+   ============================================ */
+
+.text-muted { color: var(--muted-foreground); }
+.text-sm { font-size: var(--text-sm); }
+.text-lg { font-size: var(--text-lg); }
+
+.mt-4 { margin-top: var(--space-4); }
+.mb-4 { margin-bottom: var(--space-4); }

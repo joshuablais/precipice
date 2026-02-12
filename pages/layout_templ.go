@@ -13,6 +13,7 @@ import templruntime "github.com/a-h/templ/runtime"
 import (
 	"github.com/joshuablais/precipice/components/footer"
 	"github.com/joshuablais/precipice/components/nav"
+	"os"
 )
 
 func Layout(title string) templ.Component {
@@ -43,7 +44,7 @@ func Layout(title string) templ.Component {
 		var templ_7745c5c3_Var2 string
 		templ_7745c5c3_Var2, templ_7745c5c3_Err = templ.JoinStringErrs(title)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `pages/layout.templ`, Line: 15, Col: 17}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `pages/layout.templ`, Line: 16, Col: 17}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var2))
 		if templ_7745c5c3_Err != nil {
@@ -69,7 +70,59 @@ func Layout(title string) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = footer.Footer().Render(ctx, templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = footer.Footer(footer.FooterProps{
+			Logo:        os.Getenv("ICON_URL"),
+			CompanyName: "Revere",
+			Sections: []footer.FooterSection{
+				{
+					Title: "Solutions",
+					Links: []footer.FooterLink{
+						{Label: "Sell a Home", Href: "#"},
+						{Label: "Buy a Home", Href: "/buy"},
+						{Label: "Marketing", Href: "/marketing"},
+						{Label: "Paperwork Automation", Href: "https://maisonos.com"},
+						{Label: "Property Management", Href: "https://reveremgmt.com"},
+					},
+				},
+				{
+					Title: "Support",
+					Links: []footer.FooterLink{
+						{Label: "Pricing", Href: "#pricing"},
+						{Label: "Documentation", Href: "#"},
+						{Label: "Guides", Href: "#"},
+						{Label: "Status", Href: "#"},
+					},
+				},
+				{
+					Title: "Company",
+					Links: []footer.FooterLink{
+						{Label: "About", Href: "https://reverehome.ca/about"},
+						{Label: "Blog", Href: "#"},
+						{Label: "Jobs", Href: "#"},
+						{Label: "Contact", Href: "/contact"},
+						{Label: "Partners", Href: "#"},
+					},
+				},
+				{
+					Title: "Legal",
+					Links: []footer.FooterLink{
+						{Label: "Privacy", Href: "/privacy"},
+						{Label: "Terms", Href: "#"},
+					},
+				},
+			},
+			Newsletter: footer.NewsletterProps{
+				Title:       "Subscribe to our newsletter",
+				Description: "The latest news, articles, and resources, sent to your inbox weekly.",
+			},
+			BottomLinks: []footer.FooterLink{
+				{Label: "Terms of Use", Href: "#"},
+				{Label: "Privacy Policy", Href: "/privacy"},
+				{Label: "GDPR", Href: "#"},
+			},
+			ShowStatus: true,
+			StatusHref: "#",
+		}).Render(ctx, templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
