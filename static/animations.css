@@ -1,0 +1,271 @@
+/* ============================================
+   ANIMATIONS.CSS
+   Scroll-driven via animation-timeline: view()
+   @supports guards for graceful degradation
+   ============================================ */
+
+/* --- BASELINE: elements are visible by default --- */
+[data-animate] {
+  /* no hidden state outside @supports — 
+     if browser doesn't support, content still shows */
+}
+
+@supports (animation-timeline: view()) {
+
+  /* ==========================================
+     FADE FAMILY
+     ========================================== */
+
+  [data-animate="fade-up"] {
+    animation: ru-fade-up linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 40%;
+  }
+
+  footer[data-animate="fade-up"] {
+    animation-range: entry 0% cover 30%;
+  }
+
+  [data-animate="fade-down"] {
+    animation: ru-fade-down linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 40%;
+  }
+
+  [data-animate="fade-left"] {
+    animation: ru-fade-left linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 40%;
+  }
+
+  [data-animate="fade-right"] {
+    animation: ru-fade-right linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 40%;
+  }
+
+  [data-animate="fade-in"] {
+    animation: ru-fade-in linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 20%;
+  }
+
+  /* ==========================================
+     SCALE FAMILY
+     ========================================== */
+
+  [data-animate="scale-up"] {
+    animation: ru-scale-up linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 35%;
+  }
+
+  [data-animate="scale-down"] {
+    animation: ru-scale-down linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 35%;
+  }
+
+  /* ==========================================
+     REVEAL FAMILY (clip-path)
+     Clean, editorial — good for headings
+     ========================================== */
+
+  [data-animate="reveal-up"] {
+    animation: ru-reveal-up linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 35%;
+  }
+
+  [data-animate="reveal-left"] {
+    animation: ru-reveal-left linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 35%;
+  }
+
+  [data-animate="reveal-right"] {
+    animation: ru-reveal-right linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 35%;
+  }
+
+  /* ==========================================
+     BLUR FAMILY
+     Depth effect — good for cards, images
+     ========================================== */
+
+  [data-animate="blur-in"] {
+    animation: ru-blur-in linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 30%;
+  }
+
+  [data-animate="blur-up"] {
+    animation: ru-blur-up linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 35%;
+  }
+
+  /* ==========================================
+     FLIP FAMILY (3D)
+     Use sparingly — good for cards, icons
+     ========================================== */
+
+  [data-animate="flip-up"] {
+    animation: ru-flip-up linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 40%;
+    transform-origin: bottom center;
+  }
+
+  [data-animate="flip-left"] {
+    animation: ru-flip-left linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 40%;
+    transform-origin: right center;
+  }
+
+  /* ==========================================
+     STAGGER UTILITY
+     Apply data-stagger to a parent — 
+     children animate in sequence via nth-child
+     ========================================== */
+
+  [data-stagger] > * {
+    animation: ru-fade-up linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 40%;
+  }
+
+  [data-stagger] > *:nth-child(1)  { animation-delay: 0ms;   }
+  [data-stagger] > *:nth-child(2)  { animation-delay: 80ms;  }
+  [data-stagger] > *:nth-child(3)  { animation-delay: 160ms; }
+  [data-stagger] > *:nth-child(4)  { animation-delay: 240ms; }
+  [data-stagger] > *:nth-child(5)  { animation-delay: 320ms; }
+  [data-stagger] > *:nth-child(6)  { animation-delay: 400ms; }
+  [data-stagger] > *:nth-child(n+7) { animation-delay: 480ms; }
+
+  /* ==========================================
+     SCROLL PROGRESS BAR
+     No JS. Wire to a fixed element at top of page.
+     <div data-scroll-progress></div>
+     ========================================== */
+
+  [data-scroll-progress] {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    background: var(--color-accent, oklch(60% 0.2 250));
+    transform-origin: left;
+    animation: ru-scroll-progress linear both;
+    animation-timeline: scroll(root block);
+    z-index: 9999;
+    width: 100%;
+  }
+
+}
+
+/* ============================================
+   KEYFRAMES
+   (Outside @supports — always parsed,
+    only activated if timeline is supported)
+   ============================================ */
+
+/* FADE */
+@keyframes ru-fade-up {
+  from { opacity: 0; translate: 0 1.5rem; }
+  to   { opacity: 1; translate: 0 0; }
+}
+
+@keyframes ru-fade-down {
+  from { opacity: 0; translate: 0 -1.5rem; }
+  to   { opacity: 1; translate: 0 0; }
+}
+
+@keyframes ru-fade-left {
+  from { opacity: 0; translate: 1.5rem 0; }
+  to   { opacity: 1; translate: 0 0; }
+}
+
+@keyframes ru-fade-right {
+  from { opacity: 0; translate: -1.5rem 0; }
+  to   { opacity: 1; translate: 0 0; }
+}
+
+@keyframes ru-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* SCALE */
+@keyframes ru-scale-up {
+  from { opacity: 0; scale: 0.9; }
+  to   { opacity: 1; scale: 1; }
+}
+
+@keyframes ru-scale-down {
+  from { opacity: 0; scale: 1.1; }
+  to   { opacity: 1; scale: 1; }
+}
+
+/* REVEAL (clip-path) */
+@keyframes ru-reveal-up {
+  from { clip-path: inset(100% 0 0 0); }
+  to   { clip-path: inset(0% 0 0 0); }
+}
+
+@keyframes ru-reveal-left {
+  from { clip-path: inset(0 0 0 100%); }
+  to   { clip-path: inset(0 0 0 0%); }
+}
+
+@keyframes ru-reveal-right {
+  from { clip-path: inset(0 100% 0 0); }
+  to   { clip-path: inset(0 0% 0 0); }
+}
+
+/* BLUR */
+@keyframes ru-blur-in {
+  from { opacity: 0; filter: blur(8px); }
+  to   { opacity: 1; filter: blur(0); }
+}
+
+@keyframes ru-blur-up {
+  from { opacity: 0; filter: blur(8px); translate: 0 1.5rem; }
+  to   { opacity: 1; filter: blur(0);   translate: 0 0; }
+}
+
+/* FLIP */
+@keyframes ru-flip-up {
+  from { opacity: 0; transform: perspective(600px) rotateX(-25deg); }
+  to   { opacity: 1; transform: perspective(600px) rotateX(0deg); }
+}
+
+@keyframes ru-flip-left {
+  from { opacity: 0; transform: perspective(600px) rotateY(25deg); }
+  to   { opacity: 1; transform: perspective(600px) rotateY(0deg); }
+}
+
+/* SCROLL PROGRESS */
+@keyframes ru-scroll-progress {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+
+/* ============================================
+   REDUCED MOTION RESPECT
+   Always include this — it's an a11y requirement
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+  [data-animate],
+  [data-stagger] > *,
+  [data-scroll-progress] {
+    animation: none !important;
+    opacity: 1 !important;
+    translate: none !important;
+    filter: none !important;
+    clip-path: none !important;
+    transform: none !important;
+  }
+}

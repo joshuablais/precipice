@@ -1,10 +1,11 @@
 /* ============================================
-   PRECIPICE DESIGN SYSTEM
+   PRECIPICEUI MAIN.CSS 
    ============================================ */
 
 @import "tokens.css";
 @import "reset.css";
 @import "primitives.css";
+@import "animations.css";
 
 @import "components/auth.css";
 @import "components/button.css";

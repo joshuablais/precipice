@@ -47,8 +47,8 @@ func (p FooterProps) resolvedLogo() string {
 }
 
 templ Footer(props FooterProps) {
-	<footer class="footer" data-aos="fade-up">
-		<div class="footer__container">
+	<footer class="footer">
+		<div class="footer__container" data-animate="fade-up">
 			<div class="footer__grid">
 				for _, section := range props.Sections {
 					<div class="footer__section">
