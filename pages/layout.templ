@@ -1,7 +1,10 @@
 // pages/layout.templ
 package pages
 
-import "github.com/joshuablais/precipice/components/nav"
+import (
+	"github.com/joshuablais/precipice/components/footer"
+	"github.com/joshuablais/precipice/components/nav"
+)
 
 templ Layout(title string) {
 	<!DOCTYPE html>
@@ -15,10 +18,11 @@ templ Layout(title string) {
 			<script type="module" src="/static/datastar.js"></script>
 		</head>
 		<body class="min-h-screen bg-primary text-foreground">
-				@nav.Navigation()
+			@nav.Navigation()
 			<main class="container mx-auto px-4 py-8">
 				{ children... }
 			</main>
+			@footer.Footer()
 		</body>
 	</html>
 }

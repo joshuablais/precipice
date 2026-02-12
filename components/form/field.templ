@@ -1,0 +1,56 @@
+// ui/components/form/field.templ
+package form
+
+import "fmt"
+
+type FieldProps struct {
+	ID          string
+	Name        string
+	Label       string
+	Type        string
+	Placeholder string
+	Value       string
+	Error       string
+	HelpText    string
+	Required    bool
+	Disabled    bool
+	Class       string
+}
+
+templ Field(props FieldProps) {
+	<div class={ "form-field", templ.KV("form-field--error", props.Error != ""), templ.KV("form-field--disabled", props.Disabled) }>
+		if props.Label != "" {
+			<label class="form-field__label" for={ props.ID }>
+				{ props.Label }
+				if props.Required {
+					<span class="form-field__required" aria-hidden="true">*</span>
+				}
+			</label>
+		}
+		<input
+			class={ "form-field__input", props.Class }
+			type={ props.Type }
+			id={ props.ID }
+			name={ props.Name }
+			placeholder={ props.Placeholder }
+			value={ props.Value }
+			required?={ props.Required }
+			disabled?={ props.Disabled }
+			aria-describedby={ fmt.Sprintf("%s-hint", props.ID) }
+			if props.Error != "" {
+				aria-invalid="true"
+				aria-errormessage={ fmt.Sprintf("%s-error", props.ID) }
+			}
+		/>
+		if props.Error != "" {
+			<span class="form-field__error" id={ fmt.Sprintf("%s-error", props.ID) } role="alert">
+				{ props.Error }
+			</span>
+		}
+		if props.HelpText != "" && props.Error == "" {
+			<span class="form-field__help" id={ fmt.Sprintf("%s-hint", props.ID) }>
+				{ props.HelpText }
+			</span>
+		}
+	</div>
+}

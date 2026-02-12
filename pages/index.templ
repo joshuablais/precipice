@@ -69,9 +69,9 @@ templ Index() {
 			@form.FormGroupWithHint("password", "Password", "Must be at least 8 characters") {
 				@input.Input("password", "password", "")
 			}
-@form.FormGroupWithError("username", "Username", "Username is required") {
-  <input type="text" name="username" id="username" class="error"/>
-}
+			@form.FormGroupWithError("username", "Username", "Username is required") {
+				<input type="text" name="username" id="username" class="error"/>
+			}
 		</section>
 	}
 }
