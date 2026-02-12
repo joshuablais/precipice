@@ -2,25 +2,80 @@
 package themetoggle
 
 templ ThemeToggle() {
+	<style>
+.theme-toggle-btn {
+			position: relative;
+		}
+
+		.theme-toggle-btn {
+			position: relative;
+			padding: 0.5rem;
+			border-radius: 0.5rem;
+			border: none;
+			background: transparent;
+			cursor: pointer;
+			color: var(--color-primary-foreground);
+			transition: background-color 0.2s ease;
+		}
+
+		.theme-toggle-btn:hover {
+			background-color: color-mix(in srgb, var(--color-accent) 10%, transparent);
+		}
+
+		.theme-toggle-icon-wrap {
+			position: relative;
+			width: 1.25rem;
+			height: 1.25rem;
+		}
+
+		.theme-toggle-sun,
+		.theme-toggle-moon {
+			position: absolute;
+			inset: 0;
+			width: 1.25rem;
+			height: 1.25rem;
+			transition: transform 0.5s ease, opacity 0.5s ease;
+		}
+
+		/* Light mode: sun visible, moon hidden */
+		.theme-toggle-sun {
+			transform: rotate(0deg) scale(1);
+			opacity: 1;
+		}
+
+		.theme-toggle-moon {
+			transform: rotate(90deg) scale(0);
+			opacity: 0;
+		}
+
+		/* Dark mode: moon visible, sun hidden */
+		:root.dark .theme-toggle-sun {
+			transform: rotate(90deg) scale(0);
+			opacity: 0;
+		}
+
+		:root.dark .theme-toggle-moon {
+			transform: rotate(0deg) scale(1);
+			opacity: 1;
+		}
+	</style>
 	<noscript>
 		<style>
-						/* Hide toggle when JS is disabled */
-				.theme-toggle-js-required {
+			.theme-toggle-js-required {
 				display: none;
-				}
+			}
 		</style>
 	</noscript>
 	<button
 		type="button"
 		onclick="toggleTheme()"
-		class="theme-toggle-js-required relative p-2 rounded-lg hover:bg-accent/10 transition-all duration-200 text-primary-foreground group"
+		class="theme-toggle-js-required theme-toggle-btn"
 		aria-label="Toggle theme"
 		title="Toggle theme"
 	>
-		<div class="relative w-5 h-5">
-			// Sun icon - clean, minimal design
+		<div class="theme-toggle-icon-wrap">
 			<svg
-				class="absolute inset-0 w-5 h-5 transition-all duration-500 dark:rotate-90 dark:scale-0 dark:opacity-0"
+				class="theme-toggle-sun"
 				fill="none"
 				stroke="currentColor"
 				viewBox="0 0 24 24"
@@ -38,9 +93,8 @@ templ ThemeToggle() {
 				<line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
 				<line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
 			</svg>
-			// Moon icon - elegant crescent
 			<svg
-				class="absolute inset-0 w-5 h-5 transition-all duration-500 rotate-90 scale-0 opacity-0 dark:rotate-0 dark:scale-100 dark:opacity-100"
+				class="theme-toggle-moon"
 				fill="none"
 				stroke="currentColor"
 				viewBox="0 0 24 24"
@@ -54,16 +108,15 @@ templ ThemeToggle() {
 	</button>
 	<script>
 		function toggleTheme() {
-	const html = document.documentElement;
-	const isDark = html.classList.contains('dark');
-
-	if (isDark) {
-	html.classList.remove('dark');
-	localStorage.setItem('theme', 'light');
-	} else {
-	html.classList.add('dark');
-	localStorage.setItem('theme', 'dark');
-	}
-	}
+			const html = document.documentElement;
+			const isDark = html.classList.contains('dark');
+			if (isDark) {
+				html.classList.remove('dark');
+				localStorage.setItem('theme', 'light');
+			} else {
+				html.classList.add('dark');
+				localStorage.setItem('theme', 'dark');
+			}
+		}
 	</script>
 }
