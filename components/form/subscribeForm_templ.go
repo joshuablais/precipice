@@ -64,7 +64,7 @@ func SubscribeForm() templ.Component {
 			return nil
 		})
 		templ_7745c5c3_Err = button.Button(button.Props{
-			Variant: button.VariantPrimary,
+			Variant: button.VariantDefault,
 			Size:    button.SizeLg,
 			BtnType: "submit",
 			Class:   "my-extra-class",
