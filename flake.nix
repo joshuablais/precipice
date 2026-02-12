@@ -30,6 +30,7 @@
               # Build
               just
               air
+              esbuild
 
               # Go tooling (the difference between amateur and master)
               gopls

@@ -8,3 +8,35 @@
 
 .mt-4 { margin-top: var(--space-4); }
 .mb-4 { margin-bottom: var(--space-4); }
+
+/* Alignment overrides within flex contexts */
+.ml-auto  { margin-left: auto; }
+.mr-auto  { margin-right: auto; }
+
+/* Justify variants for .row */
+.row--between  { justify-content: space-between; }
+.row--end      { justify-content: flex-end; }
+.row--start    { justify-content: flex-start; }
+
+/* Stack gap overrides */
+.stack--sm  { --stack-gap: var(--space-2); }
+.stack--lg  { --stack-gap: var(--space-8); }
+.stack--xl  { --stack-gap: var(--space-12); }
+
+/* Row gap overrides */
+.row--gap-sm  { --row-gap: var(--space-2); }
+.row--gap-lg  { --row-gap: var(--space-8); }
+
+/* Width constraints */
+.w-full   { width: 100%; }
+.w-prose  { max-width: 65ch; }
+
+/* Text */
+.text-center  { text-align: center; }
+.text-right   { text-align: right; }
+.text-muted   { color: var(--muted-foreground); }
+.text-accent  { color: var(--accent); }
+.font-bold    { font-weight: var(--font-bold); }
+
+/* Visibility */
+.hidden  { display: none; }
