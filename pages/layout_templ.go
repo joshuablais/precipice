@@ -120,7 +120,7 @@ func Layout(title string) templ.Component {
 				{Label: "Privacy Policy", Href: "/privacy"},
 				{Label: "GDPR", Href: "#"},
 			},
-			ShowStatus: true,
+			ShowStatus: false,
 			StatusHref: "#",
 		}).Render(ctx, templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {

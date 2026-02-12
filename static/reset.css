@@ -1,0 +1,17 @@
+/* ============================================
+   RESET
+   ============================================ */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+body {
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: var(--text-base);
+  line-height: var(--leading-normal);
+  color: var(--foreground);
+  background: var(--background);
+  -webkit-font-smoothing: antialiased;
+}

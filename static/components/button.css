@@ -77,3 +77,32 @@
 }
 
 .btn--link:hover { text-decoration-thickness: 2px; }
+
+/* ============================================
+   BUTTON EXTENSIONS
+   ============================================ */
+
+.btn--full {
+  width: 100%;
+}
+
+.btn--social {
+  gap: var(--space-3);
+}
+
+/* Loading state pattern */
+.btn__loading {
+  display: none;
+}
+
+.btn[aria-busy="true"] .btn__label,
+.btn.is-loading .btn__label {
+  display: none;
+}
+
+.btn[aria-busy="true"] .btn__loading,
+.btn.is-loading .btn__loading {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+}
