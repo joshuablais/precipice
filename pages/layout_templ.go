@@ -50,7 +50,7 @@ func Layout(title string) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, " - Precipice</title><link rel=\"stylesheet\" href=\"/static/main.css\"><!-- Use local Datastar --><script type=\"module\" src=\"/static/datastar.js\"></script></head><body class=\"min-h-screen bg-primary text-foreground\">")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, " - Precipice</title><link rel=\"stylesheet\" href=\"/static/main.css\"><link href=\"https://unpkg.com/aos@2.3.1/dist/aos.css\" rel=\"stylesheet\"><!-- Use local Datastar --><script type=\"module\" src=\"/static/datastar.js\"></script><script src=\"https://unpkg.com/aos@2.3.1/dist/aos.js\"></script></head><body class=\"min-h-screen bg-primary text-foreground\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -126,7 +126,7 @@ func Layout(title string) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 5, "</body></html>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 5, "</body></html><script>\n  AOS.init();\n</script>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
