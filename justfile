@@ -17,3 +17,7 @@ build: generate
 # Clean generated files
 clean:
     rm -rf bin/ tmp/ **/*_templ.go
+
+# Build CSS
+cssbuild:
+    esbuild static/main.css --bundle --minify --outfile=dist/css/main.css
