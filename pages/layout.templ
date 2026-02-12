@@ -4,7 +4,7 @@ package pages
 import (
 	"github.com/joshuablais/precipice/components/footer"
 	"github.com/joshuablais/precipice/components/nav"
-		"os"
+	"os"
 )
 
 templ Layout(title string) {
@@ -23,61 +23,59 @@ templ Layout(title string) {
 			<main class="container mx-auto px-4 py-8">
 				{ children... }
 			</main>
-
-
-				@footer.Footer(footer.FooterProps{
-    Logo:        os.Getenv("ICON_URL"),
-    CompanyName: "Revere",
-    Sections: []footer.FooterSection{
-        {
-            Title: "Solutions",
-            Links: []footer.FooterLink{
-                {Label: "Sell a Home", Href: "#"},
-                {Label: "Buy a Home", Href: "/buy"},
-                {Label: "Marketing", Href: "/marketing"},
-                {Label: "Paperwork Automation", Href: "https://maisonos.com"},
-                {Label: "Property Management", Href: "https://reveremgmt.com"},
-            },
-        },
-        {
-            Title: "Support",
-            Links: []footer.FooterLink{
-                {Label: "Pricing", Href: "#pricing"},
-                {Label: "Documentation", Href: "#"},
-                {Label: "Guides", Href: "#"},
-                {Label: "Status", Href: "#"},
-            },
-        },
-        {
-            Title: "Company",
-            Links: []footer.FooterLink{
-                {Label: "About", Href: "https://reverehome.ca/about"},
-                {Label: "Blog", Href: "#"},
-                {Label: "Jobs", Href: "#"},
-                {Label: "Contact", Href: "/contact"},
-                {Label: "Partners", Href: "#"},
-            },
-        },
-        {
-            Title: "Legal",
-            Links: []footer.FooterLink{
-                {Label: "Privacy", Href: "/privacy"},
-                {Label: "Terms", Href: "#"},
-            },
-        },
-    },
-    Newsletter: footer.NewsletterProps{
-        Title:       "Subscribe to our newsletter",
-        Description: "The latest news, articles, and resources, sent to your inbox weekly.",
-    },
-    BottomLinks: []footer.FooterLink{
-        {Label: "Terms of Use", Href: "#"},
-        {Label: "Privacy Policy", Href: "/privacy"},
-        {Label: "GDPR", Href: "#"},
-    },
-    ShowStatus: true,
-    StatusHref: "#",
-})
+			@footer.Footer(footer.FooterProps{
+				Logo:        os.Getenv("ICON_URL"),
+				CompanyName: "Revere",
+				Sections: []footer.FooterSection{
+					{
+						Title: "Solutions",
+						Links: []footer.FooterLink{
+							{Label: "Sell a Home", Href: "#"},
+							{Label: "Buy a Home", Href: "/buy"},
+							{Label: "Marketing", Href: "/marketing"},
+							{Label: "Paperwork Automation", Href: "https://maisonos.com"},
+							{Label: "Property Management", Href: "https://reveremgmt.com"},
+						},
+					},
+					{
+						Title: "Support",
+						Links: []footer.FooterLink{
+							{Label: "Pricing", Href: "#pricing"},
+							{Label: "Documentation", Href: "#"},
+							{Label: "Guides", Href: "#"},
+							{Label: "Status", Href: "#"},
+						},
+					},
+					{
+						Title: "Company",
+						Links: []footer.FooterLink{
+							{Label: "About", Href: "https://reverehome.ca/about"},
+							{Label: "Blog", Href: "#"},
+							{Label: "Jobs", Href: "#"},
+							{Label: "Contact", Href: "/contact"},
+							{Label: "Partners", Href: "#"},
+						},
+					},
+					{
+						Title: "Legal",
+						Links: []footer.FooterLink{
+							{Label: "Privacy", Href: "/privacy"},
+							{Label: "Terms", Href: "#"},
+						},
+					},
+				},
+				Newsletter: footer.NewsletterProps{
+					Title:       "Subscribe to our newsletter",
+					Description: "The latest news, articles, and resources, sent to your inbox weekly.",
+				},
+				BottomLinks: []footer.FooterLink{
+					{Label: "Terms of Use", Href: "#"},
+					{Label: "Privacy Policy", Href: "/privacy"},
+					{Label: "GDPR", Href: "#"},
+				},
+				ShowStatus: true,
+				StatusHref: "#",
+			})
 		</body>
 	</html>
 }

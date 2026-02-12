@@ -3,21 +3,21 @@ package form
 import "github.com/joshuablais/precipice/components/button"
 
 templ SubscribeForm() {
-    <form data-on-submit="@post('/subscribe')" class="subscribe-form">
-        @Field(FieldProps{
-            ID:          "email",
-            Name:        "email",
-            Type:        "email",
-            Placeholder: "Enter your email",
-            Required:    true,
-        })
-        @button.Button(button.Props{
-            Variant: button.VariantPrimary,
-            Size:    button.SizeLg,
-            BtnType: "submit",
-            Class:   "my-extra-class",
-        }) {
-            Subscribe
-        }
-    </form>
+	<form data-on-submit="@post('/subscribe')" class="subscribe-form">
+		@Field(FieldProps{
+			ID:          "email",
+			Name:        "email",
+			Type:        "email",
+			Placeholder: "Enter your email",
+			Required:    true,
+		})
+		@button.Button(button.Props{
+			Variant: button.VariantPrimary,
+			Size:    button.SizeLg,
+			BtnType: "submit",
+			Class:   "my-extra-class",
+		}) {
+			Subscribe
+		}
+	</form>
 }
