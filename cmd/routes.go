@@ -10,8 +10,11 @@ func Routes(mux *http.ServeMux) {
 
 	// Public routes
 	mux.HandleFunc("GET /", page(pages.Index()))
-	// mux.HandleFunc("GET /contact", page(public.ContactPage))
-	// mux.HandleFunc("GET /marketing", page(public.MarketingPage))
+	mux.HandleFunc("GET /components", page(pages.Components()))
+
+	// TODO
+	// mux.HandleFunc("GET /buttons", page(pages.Buttons()))
+	// mux.HandleFunc("GET /fields", page(pages.Fields()))
 
 	// Authentication routes
 	// mux.HandleFunc("GET /register", page(authentication.SignupPage))

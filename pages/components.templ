@@ -1,0 +1,28 @@
+// pages/components.templ
+package pages
+
+import (
+	"github.com/joshuablais/precipice/components/button"
+)
+
+templ Components() {
+	@Layout("Components") {
+		<section>
+			<h1>Precipice - Components</h1>
+			<div style="display: flex; gap: 0.5rem; margin-top: 1rem;">
+				@button.Button(button.Props{
+					Variant: button.VariantLink,
+					Href:    "/buttons",
+				}) {
+					Buttons
+				}
+				@button.Button(button.Props{
+					Variant: button.VariantLink,
+					Href:    "/fields",
+				}) {
+					Fields
+				}
+			</div>
+		</section>
+	}
+}
