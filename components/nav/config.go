@@ -1,5 +1,4 @@
 // precipice/components/nav/config.go
-// precipice/components/nav/config.go
 package nav
 
 import (
