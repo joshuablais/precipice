@@ -2,7 +2,7 @@
 package titles
 
 templ TitleSection(props TitleSectionProps) {
-<section class={ props.classes() } style={ templ.SafeCSS(props.style()) }>
+	<section class={ props.classes() } style={ templ.SafeCSS(props.style()) }>
 		<div class="title-section__overlay" aria-hidden="true"></div>
 		<div class="title-section__container">
 			if props.Announcement != nil {

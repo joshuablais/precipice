@@ -99,9 +99,9 @@ templ MobileMenu() {
 				Variant: button.VariantGhost,
 				Size:    button.SizeIcon,
 				Attrs: templ.Attributes{
-					"popovertarget":        "mobile-menu",
-					"popovertargetaction":  "hide",
-					"aria-label":           "Close menu",
+					"popovertarget":       "mobile-menu",
+					"popovertargetaction": "hide",
+					"aria-label":          "Close menu",
 				},
 			}) {
 				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -112,7 +112,7 @@ templ MobileMenu() {
 		</div>
 		<nav class="mobile-menu__nav">
 			for _, item := range cfg.Items {
-					<a
+				<a
 					href={ templ.SafeURL(item.Href) }
 					class="mobile-menu__link"
 				>

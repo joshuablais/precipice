@@ -1,4 +1,4 @@
-/* ─── Base ──────────────────────────────────────────────────────────── */
+/*     Base                                                              */
 .title-section {
   position: relative;
   width: 100%;
@@ -8,7 +8,7 @@
   overflow: hidden;
 }
 
-/* ─── Overlay (only meaningful on BgImage) ──────────────────────────── */
+/*     Overlay (only meaningful on BgImage)                              */
 .title-section__overlay {
   position: absolute;
   inset: 0;
@@ -16,22 +16,20 @@
   pointer-events: none;
   z-index: 0;
 }
-
 .title-section--image .title-section__overlay {
   background: rgba(0, 0, 0, 0.45);
 }
 
-/* ─── Sizes ─────────────────────────────────────────────────────────── */
+/*     Sizes                                                             */
 .title-section--sm { padding: 3rem 1.5rem; }
 .title-section--md { padding: 5.5rem 1.5rem; }
 .title-section--lg { padding: 9rem 1.5rem; }
 
-/* ─── Backgrounds ───────────────────────────────────────────────────── */
+/*     Backgrounds                                                       */
 .title-section--dark {
   background-color: #0f1117;
   color: #fff;
 }
-
 .title-section--gradient {
   background: radial-gradient(
     ellipse 80% 60% at 50% 0%,
@@ -41,21 +39,18 @@
   );
   color: #fff;
 }
-
 .title-section--image {
   background-image: var(--ts-bg-image);
   background-size: cover;
   background-position: center;
   color: #fff;
 }
-
 .title-section--light {
   background-color: #ffffff;
   color: #111827;
 }
 
-/* ─── Container ─────────────────────────────────────────────────────── */
-/* Container — always flex column */
+/*     Container                                                         */
 .title-section__container {
   position: relative;
   z-index: 1;
@@ -65,11 +60,13 @@
   padding: 0 1.5rem;
   display: flex;
   flex-direction: column;
-  align-items: flex-start; /* default, overridden below */
+  align-items: flex-start;
 }
 
-/* Alignment variants */
-.title-section--center .title-section__container {
+/*     Alignment variants                                                */
+.title-section--center .title-section__container,
+.title-section--image.title-section--center .title-section__container,
+.title-section--image .title-section__container {
   text-align: center;
   align-items: center;
 }
@@ -79,7 +76,7 @@
   align-items: flex-start;
 }
 
-/* ─── Announcement badge ─────────────────────────────────────────────── */
+/*     Announcement badge                                                */
 .title-section__announcement {
   display: inline-flex;
   align-items: center;
@@ -92,12 +89,10 @@
   color: rgba(255, 255, 255, 0.75);
   backdrop-filter: blur(4px);
 }
-
 .title-section--light .title-section__announcement {
   border-color: rgba(0, 0, 0, 0.15);
   color: rgba(0, 0, 0, 0.6);
 }
-
 .title-section__announcement a {
   font-weight: 600;
   color: #818cf8;
@@ -107,12 +102,11 @@
   gap: 0.2rem;
   transition: color 0.15s ease;
 }
-
 .title-section__announcement a:hover {
   color: #a5b4fc;
 }
 
-/* ─── Title ─────────────────────────────────────────────────────────── */
+/*     Title                                                             */
 .title-section__title {
   margin: 0 0 1.25rem;
   font-size: clamp(2rem, 5vw, 3.75rem);
@@ -129,7 +123,7 @@
   font-weight: 600;
 }
 
-/* ─── Subtitle ──────────────────────────────────────────────────────── */
+/*     Subtitle                                                          */
 .title-section__subtitle {
   margin: 0 0 2.25rem;
   font-size: clamp(0.95rem, 1.8vw, 1.125rem);
@@ -138,12 +132,13 @@
   max-width: 42rem;
 }
 
-/* ─── CTA slot ──────────────────────────────────────────────────────── */
+/*     CTA slot                                                          */
 .title-section__cta {
   display: flex;
   flex-wrap: wrap;
   gap: 0.875rem;
   align-items: center;
+  justify-content: flex-start;
 }
 
 .title-section--center .title-section__cta,
@@ -152,5 +147,5 @@
 }
 
 .title-section__cta:empty {
-  display: none; /* clean collapse when no CTAs passed */
+  display: none;
 }

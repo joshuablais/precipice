@@ -11,13 +11,13 @@ import (
 templ IndexPage() {
 	@Layout("Precipice - Home") {
 		<section>
-@titles.TitleSection(titles.TitleSectionProps{
-    Title:           "Precipice UI",
-    Background:      titles.BgImage,
-    BackgroundImage: "https://cella.b-cdn.net/Revere/Architecture_Tree_Houses.jpg",
-    Size:            titles.SizeLg,
-    Alignment:       titles.AlignCenter,
-}) {
+			@titles.TitleSection(titles.TitleSectionProps{
+				Title:           "Precipice UI",
+				Background:      titles.BgImage,
+				BackgroundImage: "https://cella.b-cdn.net/Revere/Architecture_Tree_Houses.jpg",
+				Size:            titles.SizeLg,
+				Alignment:       titles.AlignCenter,
+			}) {
 				@button.Button(button.Props{
 					Variant: button.VariantPrimary,
 					Href:    "/components",
@@ -30,7 +30,7 @@ templ IndexPage() {
 				}) {
 					Contribute
 				}
-}
+			}
 			@input.Input("email", "email", "you@example.com")
 			@input.InputWithLabel("email", "email", "Email", "you@example.com")
 			@form.FormGroup("email", "Email") {
