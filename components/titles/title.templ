@@ -1,0 +1,27 @@
+// components/titles/title.templ
+package titles
+
+templ TitleSection(props TitleSectionProps) {
+<section class={ props.classes() } style={ templ.SafeCSS(props.style()) }>
+		<div class="title-section__overlay" aria-hidden="true"></div>
+		<div class="title-section__container">
+			if props.Announcement != nil {
+				<div class="title-section__announcement">
+					<span>{ props.Announcement.Text }</span>
+					<a href={ templ.SafeURL(props.Announcement.Href) }>
+						{ props.Announcement.LinkText }
+						<span aria-hidden="true">→</span>
+					</a>
+				</div>
+			}
+			<h1 class="title-section__title">{ props.Title }</h1>
+			if props.Subtitle != "" {
+				<p class="title-section__subtitle">{ props.Subtitle }</p>
+			}
+			// Children are your Button components — zero coupling
+			<div class="title-section__cta">
+				{ children... }
+			</div>
+		</div>
+	</section>
+}

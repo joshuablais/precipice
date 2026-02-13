@@ -1,0 +1,156 @@
+/* ─── Base ──────────────────────────────────────────────────────────── */
+.title-section {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* ─── Overlay (only meaningful on BgImage) ──────────────────────────── */
+.title-section__overlay {
+  position: absolute;
+  inset: 0;
+  background: transparent;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.title-section--image .title-section__overlay {
+  background: rgba(0, 0, 0, 0.45);
+}
+
+/* ─── Sizes ─────────────────────────────────────────────────────────── */
+.title-section--sm { padding: 3rem 1.5rem; }
+.title-section--md { padding: 5.5rem 1.5rem; }
+.title-section--lg { padding: 9rem 1.5rem; }
+
+/* ─── Backgrounds ───────────────────────────────────────────────────── */
+.title-section--dark {
+  background-color: #0f1117;
+  color: #fff;
+}
+
+.title-section--gradient {
+  background: radial-gradient(
+    ellipse 80% 60% at 50% 0%,
+    #1e1b4b 0%,
+    #0f0f1a 55%,
+    #080810 100%
+  );
+  color: #fff;
+}
+
+.title-section--image {
+  background-image: var(--ts-bg-image);
+  background-size: cover;
+  background-position: center;
+  color: #fff;
+}
+
+.title-section--light {
+  background-color: #ffffff;
+  color: #111827;
+}
+
+/* ─── Container ─────────────────────────────────────────────────────── */
+/* Container — always flex column */
+.title-section__container {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 56rem;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* default, overridden below */
+}
+
+/* Alignment variants */
+.title-section--center .title-section__container {
+  text-align: center;
+  align-items: center;
+}
+
+.title-section--left .title-section__container {
+  text-align: left;
+  align-items: flex-start;
+}
+
+/* ─── Announcement badge ─────────────────────────────────────────────── */
+.title-section__announcement {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 1rem;
+  margin-bottom: 1.75rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(4px);
+}
+
+.title-section--light .title-section__announcement {
+  border-color: rgba(0, 0, 0, 0.15);
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.title-section__announcement a {
+  font-weight: 600;
+  color: #818cf8;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2rem;
+  transition: color 0.15s ease;
+}
+
+.title-section__announcement a:hover {
+  color: #a5b4fc;
+}
+
+/* ─── Title ─────────────────────────────────────────────────────────── */
+.title-section__title {
+  margin: 0 0 1.25rem;
+  font-size: clamp(2rem, 5vw, 3.75rem);
+  font-weight: 800;
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+}
+
+/* Image variant: Revere-style spaced caps */
+.title-section--image .title-section__title {
+  font-size: clamp(1.5rem, 3.5vw, 2.75rem);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+/* ─── Subtitle ──────────────────────────────────────────────────────── */
+.title-section__subtitle {
+  margin: 0 0 2.25rem;
+  font-size: clamp(0.95rem, 1.8vw, 1.125rem);
+  line-height: 1.75;
+  opacity: 0.7;
+  max-width: 42rem;
+}
+
+/* ─── CTA slot ──────────────────────────────────────────────────────── */
+.title-section__cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.875rem;
+  align-items: center;
+}
+
+.title-section--center .title-section__cta,
+.title-section--image .title-section__cta {
+  justify-content: center;
+}
+
+.title-section__cta:empty {
+  display: none; /* clean collapse when no CTAs passed */
+}
