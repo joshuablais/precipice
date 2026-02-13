@@ -15,6 +15,7 @@ import (
 	"github.com/joshuablais/precipice/components/themetoggle"
 )
 
+// data-store is gone — no JS state needed
 func Navigation() templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
@@ -36,7 +37,7 @@ func Navigation() templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<header class=\"nav\" data-store=\"{ mobileMenuOpen: false }\"><div class=\"nav__inner container\">")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<header class=\"nav\"><div class=\"nav__inner container\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -109,7 +110,7 @@ func Logo() templ.Component {
 		var templ_7745c5c3_Var3 templ.SafeURL
 		templ_7745c5c3_Var3, templ_7745c5c3_Err = templ.JoinURLErrs(templ.SafeURL(cfg.Logo.Href))
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/nav/nav.templ`, Line: 26, Col: 39}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/nav/nav.templ`, Line: 27, Col: 39}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var3))
 		if templ_7745c5c3_Err != nil {
@@ -122,7 +123,7 @@ func Logo() templ.Component {
 		var templ_7745c5c3_Var4 string
 		templ_7745c5c3_Var4, templ_7745c5c3_Err = templ.JoinStringErrs(cfg.Logo.AltText)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/nav/nav.templ`, Line: 30, Col: 26}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/nav/nav.templ`, Line: 31, Col: 26}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var4))
 		if templ_7745c5c3_Err != nil {
@@ -169,7 +170,7 @@ func DesktopNav() templ.Component {
 			var templ_7745c5c3_Var6 templ.SafeURL
 			templ_7745c5c3_Var6, templ_7745c5c3_Err = templ.JoinURLErrs(templ.SafeURL(item.Href))
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/nav/nav.templ`, Line: 37, Col: 37}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/nav/nav.templ`, Line: 38, Col: 37}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var6))
 			if templ_7745c5c3_Err != nil {
@@ -182,7 +183,7 @@ func DesktopNav() templ.Component {
 			var templ_7745c5c3_Var7 string
 			templ_7745c5c3_Var7, templ_7745c5c3_Err = templ.JoinStringErrs(item.Label)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/nav/nav.templ`, Line: 38, Col: 16}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/nav/nav.templ`, Line: 39, Col: 16}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var7))
 			if templ_7745c5c3_Err != nil {
@@ -242,7 +243,7 @@ func DesktopAuthButtons() templ.Component {
 				var templ_7745c5c3_Var10 string
 				templ_7745c5c3_Var10, templ_7745c5c3_Err = templ.JoinStringErrs(authBtn.Label)
 				if templ_7745c5c3_Err != nil {
-					return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/nav/nav.templ`, Line: 52, Col: 19}
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/nav/nav.templ`, Line: 53, Col: 19}
 				}
 				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var10))
 				if templ_7745c5c3_Err != nil {
@@ -267,6 +268,8 @@ func DesktopAuthButtons() templ.Component {
 	})
 }
 
+// popovertarget wires the button to the menu — no JS, no aria management needed
+// Switched to span.bar structure so CSS :has() can animate hamburger → X cleanly
 func HamburgerButton() templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
@@ -300,7 +303,7 @@ func HamburgerButton() templ.Component {
 				}()
 			}
 			ctx = templ.InitializeContext(ctx)
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 15, "<span class=\"sr-only\">Toggle menu</span> <svg class=\"nav__hamburger-icon\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><line x1=\"4\" x2=\"20\" y1=\"12\" y2=\"12\"></line> <line x1=\"4\" x2=\"20\" y1=\"6\" y2=\"6\"></line> <line x1=\"4\" x2=\"20\" y1=\"18\" y2=\"18\"></line></svg>")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 15, "<span class=\"nav__hamburger-icon\" aria-hidden=\"true\"><span class=\"bar\"></span> <span class=\"bar\"></span> <span class=\"bar\"></span></span>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -311,10 +314,8 @@ func HamburgerButton() templ.Component {
 			Size:    button.SizeIcon,
 			Class:   "nav__hamburger",
 			Attrs: templ.Attributes{
-				"data-on-click":           "$mobileMenuOpen = !$mobileMenuOpen",
-				"aria-expanded":           "false",
-				"aria-controls":           "mobile-menu",
-				"data-attr-aria-expanded": "$mobileMenuOpen",
+				"popovertarget": "mobile-menu",
+				"aria-label":    "Toggle navigation menu",
 			},
 		}).Render(templ.WithChildren(ctx, templ_7745c5c3_Var12), templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
@@ -346,14 +347,14 @@ func MobileMenu() templ.Component {
 		}
 		ctx = templ.ClearChildren(ctx)
 		cfg := GetNavConfig()
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 16, "<div id=\"mobile-menu\" class=\"mobile-menu\" data-attr-data-open=\"$mobileMenuOpen\" role=\"dialog\" aria-modal=\"true\"><div class=\"mobile-menu__backdrop\" data-on-click=\"$mobileMenuOpen = false\"></div><div class=\"mobile-menu__panel\"><div class=\"mobile-menu__header\"><a href=\"")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 16, "<div id=\"mobile-menu\" class=\"mobile-menu\" popover role=\"dialog\" aria-modal=\"true\" aria-label=\"Navigation menu\"><div class=\"mobile-menu__header\"><a href=\"")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var14 templ.SafeURL
 		templ_7745c5c3_Var14, templ_7745c5c3_Err = templ.JoinURLErrs(templ.SafeURL(cfg.Logo.Href))
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/nav/nav.templ`, Line: 94, Col: 42}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/nav/nav.templ`, Line: 92, Col: 41}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var14))
 		if templ_7745c5c3_Err != nil {
@@ -366,7 +367,7 @@ func MobileMenu() templ.Component {
 		var templ_7745c5c3_Var15 string
 		templ_7745c5c3_Var15, templ_7745c5c3_Err = templ.JoinStringErrs(cfg.Logo.AltText)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/nav/nav.templ`, Line: 98, Col: 29}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/nav/nav.templ`, Line: 96, Col: 28}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var15))
 		if templ_7745c5c3_Err != nil {
@@ -388,7 +389,7 @@ func MobileMenu() templ.Component {
 				}()
 			}
 			ctx = templ.InitializeContext(ctx)
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 19, "<svg class=\"mobile-menu__close-icon\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M18 6 6 18\"></path> <path d=\"m6 6 12 12\"></path></svg>")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 19, "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M18 6 6 18\"></path> <path d=\"m6 6 12 12\"></path></svg>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -398,8 +399,9 @@ func MobileMenu() templ.Component {
 			Variant: button.VariantGhost,
 			Size:    button.SizeIcon,
 			Attrs: templ.Attributes{
-				"data-on-click": "$mobileMenuOpen = false",
-				"aria-label":    "Close menu",
+				"popovertarget":       "mobile-menu",
+				"popovertargetaction": "hide",
+				"aria-label":          "Close menu",
 			},
 		}).Render(templ.WithChildren(ctx, templ_7745c5c3_Var16), templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
@@ -417,20 +419,20 @@ func MobileMenu() templ.Component {
 			var templ_7745c5c3_Var17 templ.SafeURL
 			templ_7745c5c3_Var17, templ_7745c5c3_Err = templ.JoinURLErrs(templ.SafeURL(item.Href))
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/nav/nav.templ`, Line: 117, Col: 37}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/nav/nav.templ`, Line: 116, Col: 36}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var17))
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 22, "\" class=\"mobile-menu__link\" data-on-click=\"$mobileMenuOpen = false\">")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 22, "\" class=\"mobile-menu__link\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 			var templ_7745c5c3_Var18 string
 			templ_7745c5c3_Var18, templ_7745c5c3_Err = templ.JoinStringErrs(item.Label)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/nav/nav.templ`, Line: 121, Col: 18}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/nav/nav.templ`, Line: 119, Col: 17}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var18))
 			if templ_7745c5c3_Err != nil {
@@ -469,7 +471,7 @@ func MobileMenu() templ.Component {
 				var templ_7745c5c3_Var20 string
 				templ_7745c5c3_Var20, templ_7745c5c3_Err = templ.JoinStringErrs(authBtn.Label)
 				if templ_7745c5c3_Err != nil {
-					return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/nav/nav.templ`, Line: 141, Col: 22}
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/nav/nav.templ`, Line: 136, Col: 21}
 				}
 				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var20))
 				if templ_7745c5c3_Err != nil {
@@ -482,15 +484,12 @@ func MobileMenu() templ.Component {
 				Size:    button.SizeMd,
 				Href:    authBtn.Href,
 				Class:   "w-full",
-				Attrs: templ.Attributes{
-					"data-on-click": "$mobileMenuOpen = false",
-				},
 			}).Render(templ.WithChildren(ctx, templ_7745c5c3_Var19), templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 26, "</div></div></div></div>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 26, "</div></div></div>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

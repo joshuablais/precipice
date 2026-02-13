@@ -1,7 +1,6 @@
 /* ============================================
    NAVIGATION
    ============================================ */
-
 .nav {
   position: sticky;
   top: 0;
@@ -64,43 +63,107 @@
   gap: var(--space-2);
 }
 
-/* Hamburger */
+/* ============================================
+   HAMBURGER BUTTON
+   ============================================ */
+
 .nav__hamburger {
   display: flex;
 }
 
 .nav__hamburger-icon {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
   width: 1.5rem;
   height: 1.5rem;
 }
 
-/* Mobile menu */
+.nav__hamburger-icon .bar {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: currentColor;
+  border-radius: 2px;
+  transform-origin: center;
+  transition:
+    transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity   0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Hamburger → X when popover is open */
+:has(#mobile-menu:popover-open) .nav__hamburger-icon .bar:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+:has(#mobile-menu:popover-open) .nav__hamburger-icon .bar:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+
+:has(#mobile-menu:popover-open) .nav__hamburger-icon .bar:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ============================================
+   MOBILE MENU — POPOVER API
+   ============================================ */
+
 .mobile-menu {
   position: fixed;
-  inset: 0;
-  z-index: 100;
-  display: none;
+  inset: 0 0 0 auto;
+  width: min(20rem, 100vw - var(--space-8));
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-left: 1px solid var(--border);
+  background: var(--background);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+
+  /* Closed / exit state */
+  translate: 100% 0;
+  opacity: 0;
+
+  transition:
+    translate 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity   0.35s cubic-bezier(0.4, 0, 0.2, 1),
+    display   0.35s allow-discrete,
+    overlay   0.35s allow-discrete;
 }
 
-.mobile-menu[data-open="true"] {
-  display: block;
+.mobile-menu:popover-open {
+  translate: 0 0;
+  opacity: 1;
 }
 
-.mobile-menu__backdrop {
-  position: absolute;
-  inset: 0;
+@starting-style {
+  .mobile-menu:popover-open {
+    translate: 100% 0;
+    opacity: 0;
+  }
+}
+
+/* Backdrop */
+.mobile-menu::backdrop {
+  background: hsl(0 0% 0% / 0);
+  transition:
+    background 0.35s ease,
+    display    0.35s allow-discrete,
+    overlay    0.35s allow-discrete;
+}
+
+.mobile-menu:popover-open::backdrop {
   background: hsl(0 0% 0% / 0.5);
 }
 
-.mobile-menu__panel {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  width: min(20rem, 100vw - var(--space-8));
-  background: var(--background);
-  border-left: 1px solid var(--border);
-  overflow-y: auto;
+@starting-style {
+  .mobile-menu:popover-open::backdrop {
+    background: hsl(0 0% 0% / 0);
+  }
 }
 
 .mobile-menu__header {
@@ -153,7 +216,10 @@
   gap: var(--space-2);
 }
 
-/* Desktop breakpoint */
+/* ============================================
+   DESKTOP BREAKPOINT
+   ============================================ */
+
 @media (min-width: 48rem) {
   .nav__links {
     display: flex;
@@ -168,7 +234,10 @@
   }
 }
 
-/* Screen reader only */
+/* ============================================
+   UTILITIES
+   ============================================ */
+
 .sr-only {
   position: absolute;
   width: 1px;

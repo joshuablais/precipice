@@ -6,8 +6,9 @@ import (
 	"github.com/joshuablais/precipice/components/themetoggle"
 )
 
+// data-store is gone — no JS state needed
 templ Navigation() {
-	<header class="nav" data-store="{ mobileMenuOpen: false }">
+	<header class="nav">
 		<div class="nav__inner container">
 			@Logo()
 			@DesktopNav()
@@ -55,93 +56,86 @@ templ DesktopAuthButtons() {
 	</div>
 }
 
+// popovertarget wires the button to the menu — no JS, no aria management needed
+// Switched to span.bar structure so CSS :has() can animate hamburger → X cleanly
 templ HamburgerButton() {
 	@button.Button(button.Props{
 		Variant: button.VariantGhost,
 		Size:    button.SizeIcon,
 		Class:   "nav__hamburger",
 		Attrs: templ.Attributes{
-			"data-on-click":           "$mobileMenuOpen = !$mobileMenuOpen",
-			"aria-expanded":           "false",
-			"aria-controls":           "mobile-menu",
-			"data-attr-aria-expanded": "$mobileMenuOpen",
+			"popovertarget": "mobile-menu",
+			"aria-label":    "Toggle navigation menu",
 		},
 	}) {
-		<span class="sr-only">Toggle menu</span>
-		<svg class="nav__hamburger-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-			<line x1="4" x2="20" y1="12" y2="12"></line>
-			<line x1="4" x2="20" y1="6" y2="6"></line>
-			<line x1="4" x2="20" y1="18" y2="18"></line>
-		</svg>
+		<span class="nav__hamburger-icon" aria-hidden="true">
+			<span class="bar"></span>
+			<span class="bar"></span>
+			<span class="bar"></span>
+		</span>
 	}
 }
 
 templ MobileMenu() {
 	{{ cfg := GetNavConfig() }}
+	// popover attribute is the entire mechanism — backdrop, dismiss, escape, focus all free
+	// manual backdrop div is gone, ::backdrop pseudo-element handles it in CSS
 	<div
 		id="mobile-menu"
 		class="mobile-menu"
-		data-attr-data-open="$mobileMenuOpen"
+		popover
 		role="dialog"
 		aria-modal="true"
+		aria-label="Navigation menu"
 	>
-		<div
-			class="mobile-menu__backdrop"
-			data-on-click="$mobileMenuOpen = false"
-		></div>
-		<div class="mobile-menu__panel">
-			<div class="mobile-menu__header">
-				<a href={ templ.SafeURL(cfg.Logo.Href) } class="nav__logo">
-					<svg class="nav__logo-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-						<path d="m8 3 4 8 5-5 5 15H2L8 3z"></path>
-					</svg>
-					<span>{ cfg.Logo.AltText }</span>
-				</a>
-				@button.Button(button.Props{
-					Variant: button.VariantGhost,
-					Size:    button.SizeIcon,
-					Attrs: templ.Attributes{
-						"data-on-click": "$mobileMenuOpen = false",
-						"aria-label":    "Close menu",
-					},
-				}) {
-					<svg class="mobile-menu__close-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-						<path d="M18 6 6 18"></path>
-						<path d="m6 6 12 12"></path>
-					</svg>
-				}
-			</div>
-			<nav class="mobile-menu__nav">
-				for _, item := range cfg.Items {
+		<div class="mobile-menu__header">
+			<a href={ templ.SafeURL(cfg.Logo.Href) } class="nav__logo">
+				<svg class="nav__logo-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+					<path d="m8 3 4 8 5-5 5 15H2L8 3z"></path>
+				</svg>
+				<span>{ cfg.Logo.AltText }</span>
+			</a>
+			@button.Button(button.Props{
+				Variant: button.VariantGhost,
+				Size:    button.SizeIcon,
+				Attrs: templ.Attributes{
+					"popovertarget":        "mobile-menu",
+					"popovertargetaction":  "hide",
+					"aria-label":           "Close menu",
+				},
+			}) {
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+					<path d="M18 6 6 18"></path>
+					<path d="m6 6 12 12"></path>
+				</svg>
+			}
+		</div>
+		<nav class="mobile-menu__nav">
+			for _, item := range cfg.Items {
 					<a
-						href={ templ.SafeURL(item.Href) }
-						class="mobile-menu__link"
-						data-on-click="$mobileMenuOpen = false"
-					>
-						{ item.Label }
-					</a>
-				}
-			</nav>
-			<div class="mobile-menu__section">
-				<p class="mobile-menu__section-title">Appearance</p>
-				@themetoggle.ThemeToggle()
-			</div>
-			<div class="mobile-menu__section">
-				<div class="mobile-menu__auth">
-					for _, authBtn := range cfg.AuthButtons {
-						@button.Button(button.Props{
-							Variant: button.Variant(authBtn.Variant),
-							Size:    button.SizeMd,
-							Href:    authBtn.Href,
-							Class:   "w-full",
-							Attrs: templ.Attributes{
-								"data-on-click": "$mobileMenuOpen = false",
-							},
-						}) {
-							{ authBtn.Label }
-						}
+					href={ templ.SafeURL(item.Href) }
+					class="mobile-menu__link"
+				>
+					{ item.Label }
+				</a>
+			}
+		</nav>
+		<div class="mobile-menu__section">
+			<p class="mobile-menu__section-title">Appearance</p>
+			@themetoggle.ThemeToggle()
+		</div>
+		<div class="mobile-menu__section">
+			<div class="mobile-menu__auth">
+				for _, authBtn := range cfg.AuthButtons {
+					@button.Button(button.Props{
+						Variant: button.Variant(authBtn.Variant),
+						Size:    button.SizeMd,
+						Href:    authBtn.Href,
+						Class:   "w-full",
+					}) {
+						{ authBtn.Label }
 					}
-				</div>
+				}
 			</div>
 		</div>
 	</div>
