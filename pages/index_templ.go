@@ -87,6 +87,7 @@ func IndexPage() templ.Component {
 				templ_7745c5c3_Err = button.Button(button.Props{
 					Variant: button.VariantPrimary,
 					Href:    "/components",
+					Glyph:   "",
 				}).Render(templ.WithChildren(ctx, templ_7745c5c3_Var4), templ_7745c5c3_Buffer)
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
@@ -116,6 +117,7 @@ func IndexPage() templ.Component {
 				templ_7745c5c3_Err = button.Button(button.Props{
 					Variant: button.VariantOutline,
 					Href:    "http://github.com/joshuablais/precipice",
+					Glyph:   "",
 				}).Render(templ.WithChildren(ctx, templ_7745c5c3_Var5), templ_7745c5c3_Buffer)
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
@@ -124,6 +126,7 @@ func IndexPage() templ.Component {
 			})
 			templ_7745c5c3_Err = titles.TitleSection(titles.TitleSectionProps{
 				Title:           "Precipice UI",
+				Subtitle:        "A UI Framework for the Hypermedia Renaissance",
 				Background:      titles.BgImage,
 				BackgroundImage: "https://cella.b-cdn.net/Revere/Architecture_Tree_Houses.jpg",
 				Size:            titles.SizeLg,

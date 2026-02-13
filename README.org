@@ -1,6 +1,8 @@
 #+title: Readme
 
-Precipice - A Final UI Framework
+Precipice UI - A Final UI Framework
+
+The UI framework for the hypermedia renaissance.
 
 This Framework uses go-templ, datastar, and Vanilla CSS to create a full user experience. No JS, no BS.
 

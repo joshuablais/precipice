@@ -8,7 +8,7 @@ run: generate
 
 # Live reload (actual hot reloading)
 dev:
-    air & sleep 1 && chromium --new-window http://localhost:3000
+    air
 
 # Build for production
 build: generate
