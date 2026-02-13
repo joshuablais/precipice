@@ -45,7 +45,7 @@ func ButtonsPage() templ.Component {
 				}()
 			}
 			ctx = templ.InitializeContext(ctx)
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<section><h1>Buttons</h1><p>A UI framework to end all frameworks.</p><div style=\"display: flex; gap: 0.5rem; margin-top: 1rem;\">")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<section class=\"container\"><h1>Buttons</h1><p>A UI framework to end all frameworks.</p><div style=\"display: flex; gap: 0.5rem; margin-top: 1rem;\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}

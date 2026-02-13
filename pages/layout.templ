@@ -19,7 +19,9 @@ templ Layout(title string) {
 			<script type="module" src="/static/datastar.js"></script>
 		</head>
 		<body class="min-h-screen bg-primary text-foreground">
-			@nav.Navigation()
+			<div>
+				@nav.Navigation()
+			</div>
 			<main class="container mx-auto px-4 py-8">
 				{ children... }
 			</main>
