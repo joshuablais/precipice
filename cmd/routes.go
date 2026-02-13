@@ -9,11 +9,11 @@ func Routes(mux *http.ServeMux) {
 	page := NewPageHandler()
 
 	// Public routes
-	mux.HandleFunc("GET /", page(pages.Index()))
-	mux.HandleFunc("GET /components", page(pages.Components()))
+	mux.HandleFunc("GET /", page(pages.IndexPage()))
+	mux.HandleFunc("GET /components", page(pages.ComponentsPage()))
 
 	// TODO
-	// mux.HandleFunc("GET /buttons", page(pages.Buttons()))
+	mux.HandleFunc("GET /buttons", page(pages.ButtonsPage()))
 	// mux.HandleFunc("GET /fields", page(pages.Fields()))
 
 	// Authentication routes

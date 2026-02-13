@@ -40,11 +40,7 @@ func getEnvOrDefault(key, defaultValue string) string {
 func GetNavConfig() NavConfig {
 	return NavConfig{
 		Items: []NavItem{
-			{Label: "For Agents", Href: "/agents"},
-			{Label: "For Brokers", Href: "/brokers"},
-			{Label: "Features", Href: "#features"},
-			{Label: "Pricing", Href: "#pricing"},
-			{Label: "Contact", Href: "/contact"},
+			{Label: "Components", Href: "/components"},
 		},
 		AuthButtons: []AuthButton{
 			{

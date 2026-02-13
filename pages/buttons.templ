@@ -1,0 +1,64 @@
+// pages/buttons.templ
+package pages
+
+import (
+	"github.com/joshuablais/precipice/components/button"
+)
+
+templ ButtonsPage() {
+	@Layout("Precipice - Buttons") {
+		<section>
+			<h1>Buttons</h1>
+			<p>A UI framework to end all frameworks.</p>
+			<div style="display: flex; gap: 0.5rem; margin-top: 1rem;">
+				@button.Button(button.Props{Variant: button.VariantPrimary}) {
+					Primary
+				}
+				@button.Button(button.Props{Variant: button.VariantDestructive}) {
+					Destructive
+				}
+				@button.Button(button.Props{Variant: button.VariantOutline}) {
+					Outline
+				}
+				@button.Button(button.Props{Variant: button.VariantGhost}) {
+					Ghost
+				}
+				@button.Button(button.Props{Variant: button.VariantLink}) {
+					Link
+				}
+				// Note this is how to use a button with endpoint
+				@button.Button(button.Props{Href: "/login"}) {
+					Login 
+				}
+				@button.Button(button.Props{
+					Variant: button.VariantPrimary,
+					Href:    "/dashboard",
+				}) {
+					Dashboard 
+				}
+			</div>
+			<div style="display: flex; gap: 0.5rem; margin-top: 1rem;">
+				@button.Button(button.Props{Size: button.SizeSm}) {
+					Small
+				}
+				@button.Button(button.Props{}) {
+					Medium
+				}
+				@button.Button(button.Props{Size: button.SizeLg}) {
+					Large
+				}
+			</div>
+			<div data-signals="{loading: false}" style="margin-top: 1rem;">
+				@button.Button(button.Props{
+					Variant: button.VariantPrimary,
+					Attrs: templ.Attributes{
+						"data-on-click":      "$loading = true",
+						"data-bind-disabled": "$loading",
+					},
+				}) {
+					Submit
+				}
+			</div>
+		</section>
+	}
+}
