@@ -16,7 +16,7 @@ templ IndexPage() {
 				Title:           "Precipice UI",
 				Subtitle:        "A UI Framework for the Hypermedia Renaissance",
 				Background:      titles.BgImage,
-				BackgroundImage: "https://cella.b-cdn.net/Revere/Architecture_Tree_Houses.jpg",
+				BackgroundImage: "https://images.squarespace-cdn.com/content/v1/5e8f0a50ea1914768acbc668/1603995625681-QF8CZ6CDAFKF3NUC65XI/nathan-shipps-LMXI9cjVYXk-unsplash+MED.jpg",
 				Size:            titles.SizeLg,
 				Alignment:       titles.AlignCenter,
 			}) {
@@ -37,7 +37,15 @@ templ IndexPage() {
 			}
 			@header.Header(header.HeaderProps{
 				Headline: "Testing",
-			})
+			}) {
+				@button.Button(button.Props{
+					Variant: button.VariantOutline,
+					Href:    "http://github.com/joshuablais/precipice",
+					Glyph:   "",
+				}) {
+					Contribute
+				}
+			}
 			@input.Input("email", "email", "you@example.com")
 			@input.InputWithLabel("email", "email", "Email", "you@example.com")
 			@form.FormGroup("email", "Email") {
