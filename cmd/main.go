@@ -18,8 +18,8 @@ func main() {
 	Routes(mux, cfg)
 
 	// Routes
-	slog.Info("starting server", "addr", ":3000")
-	if err := http.ListenAndServe(":3000", mux); err != nil {
+	slog.Info("starting server", "addr", ":3001")
+	if err := http.ListenAndServe(":3001", mux); err != nil {
 		slog.Error("server error", "err", err)
 		os.Exit(1)
 	}
