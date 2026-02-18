@@ -1,0 +1,19 @@
+.header-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    min-height: 100vh; /* full viewport hero, adjust as needed */
+    padding: 2rem;
+}
+
+.header-title {
+    font-size: clamp(2rem, 5vw, 4rem); /* fluid typography */
+    margin-bottom: 1rem;
+}
+
+.header-cta {
+    display: flex;
+    gap: 1rem;
+}

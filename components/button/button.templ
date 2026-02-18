@@ -76,8 +76,9 @@ templ Button(props Props) {
 			if p.Glyph != "" {
 				<span class="btn__glyph" aria-hidden="true">{ p.Glyph }</span>
 			}
-			<span class="btn__label">{ children... }
-</span>
+			<span class="btn__label">
+				{ children... }
+			</span>
 		</a>
 	} else {
 		<button
@@ -95,8 +96,9 @@ templ Button(props Props) {
 			if p.Glyph != "" {
 				<span class="btn__glyph" aria-hidden="true">{ p.Glyph }</span>
 			}
-			<span class="btn__label">{ children... }
-</span>
+			<span class="btn__label">
+				{ children... }
+			</span>
 		</button>
 	}
 }

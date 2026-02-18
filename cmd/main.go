@@ -10,10 +10,10 @@ import (
 func main() {
 	mux := http.NewServeMux()
 
-	// Static files
+	// Static file serving
 	mux.Handle("GET /static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
 
-	Routes(mux) // This goes LAST
+	Routes(mux)
 
 	// Routes
 	slog.Info("starting server", "addr", ":3000")

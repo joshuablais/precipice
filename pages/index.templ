@@ -4,6 +4,7 @@ package pages
 import (
 	"github.com/joshuablais/precipice/components/button"
 	"github.com/joshuablais/precipice/components/form"
+	"github.com/joshuablais/precipice/components/header"
 	"github.com/joshuablais/precipice/components/input"
 	"github.com/joshuablais/precipice/components/titles"
 )
@@ -34,6 +35,9 @@ templ IndexPage() {
 					Contribute
 				}
 			}
+			@header.Header(header.HeaderProps{
+				Headline: "Testing",
+			})
 			@input.Input("email", "email", "you@example.com")
 			@input.InputWithLabel("email", "email", "Email", "you@example.com")
 			@form.FormGroup("email", "Email") {

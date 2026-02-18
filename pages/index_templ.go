@@ -13,6 +13,7 @@ import templruntime "github.com/a-h/templ/runtime"
 import (
 	"github.com/joshuablais/precipice/components/button"
 	"github.com/joshuablais/precipice/components/form"
+	"github.com/joshuablais/precipice/components/header"
 	"github.com/joshuablais/precipice/components/input"
 	"github.com/joshuablais/precipice/components/titles"
 )
@@ -132,6 +133,12 @@ func IndexPage() templ.Component {
 				Size:            titles.SizeLg,
 				Alignment:       titles.AlignCenter,
 			}).Render(templ.WithChildren(ctx, templ_7745c5c3_Var3), templ_7745c5c3_Buffer)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = header.Header(header.HeaderProps{
+				Headline: "Testing",
+			}).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
