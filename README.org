@@ -42,8 +42,10 @@ CSS has come a long way in the past 5 years, to the point in which we can replac
 **** TODO carousel
 **** TODO slider
 **** TODO Animations
-*** TODO Fix navbar coupling and permit it to be configured in the app.config
 
 ** Fixes
 *** DONE fix dark/light theme toggle icon
 CLOSED: [2026-02-12 Thu 15:23]
+*** DONE Fix navbar coupling and permit it to be configured in the app.config
+CLOSED: [2026-02-18 Wed 07:51]
+

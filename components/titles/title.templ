@@ -14,12 +14,12 @@ templ TitleSection(props TitleSectionProps) {
 					</a>
 				</div>
 			}
-			<h1 class="title-section__title">{ props.Title }</h1>
+			<h1 class="title-section__title" data-animate="fade-right-load">{ props.Title }</h1>
 			if props.Subtitle != "" {
-				<p class="title-section__subtitle">{ props.Subtitle }</p>
+				<p class="title-section__subtitle" data-animate="fade-left-load">{ props.Subtitle }</p>
 			}
 			// Children are your Button components — zero coupling
-			<div class="title-section__cta">
+			<div class="title-section__cta" data-animate="fade-up-load">
 				{ children... }
 			</div>
 		</div>

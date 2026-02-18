@@ -37,7 +37,7 @@ type TitleSectionProps struct {
 	Subtitle        string
 	Alignment       Alignment
 	Background      Background
-	BackgroundImage string // only used when Background == BgImage
+	BackgroundImage string
 	Size            Size
 	Announcement    *Announcement
 }
