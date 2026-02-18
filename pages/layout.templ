@@ -4,10 +4,10 @@ package pages
 import (
 	"github.com/joshuablais/precipice/components/footer"
 	"github.com/joshuablais/precipice/components/nav"
-	"os"
+	"github.com/joshuablais/precipice/internal/config"
 )
 
-templ Layout(title string) {
+templ Layout(title string, cfg *config.Config) {
 	<!DOCTYPE html>
 	<html lang="en">
 		<head>
@@ -20,13 +20,27 @@ templ Layout(title string) {
 		</head>
 		<body class="min-h-screen bg-primary text-foreground">
 			<div>
-				@nav.Navigation()
+@nav.Navigation(nav.NavConfig{
+                Logo: nav.LogoConfig{
+                    Href:    "/",
+                    AltText: cfg.SiteName,
+                    // DesktopURL, MobileURL from cfg if you add those fields
+                },
+                Items: []nav.NavItem{
+                    {Label: "Components", Href: "/components"},
+                },
+                AuthButtons: []nav.AuthButton{
+                    {Label: "Log In", Href: "/login", Variant: "ghost"},
+                    {Label: "Sign Up", Href: "/register", Variant: "primary"},
+                },
+            })
+            { children... }
 			</div>
 			<main class="container mx-auto px-4 py-8">
 				{ children... }
 			</main>
 			@footer.Footer(footer.FooterProps{
-				Logo:        os.Getenv("ICON_URL"),
+				Logo:        cfg.IconURL,
 				CompanyName: "Revere",
 				Sections: []footer.FooterSection{
 					{
@@ -73,7 +87,6 @@ templ Layout(title string) {
 				BottomLinks: []footer.FooterLink{
 					{Label: "Terms of Use", Href: "#"},
 					{Label: "Privacy Policy", Href: "/privacy"},
-					{Label: "GDPR", Href: "#"},
 				},
 				ShowStatus: false,
 				StatusHref: "#",

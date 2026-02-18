@@ -2,9 +2,10 @@
 package pages
 
 import "github.com/joshuablais/precipice/components/button"
+import "github.com/joshuablais/precipice/internal/config"
 
-templ ButtonsPage() {
-	@Layout("Precipice - Buttons") {
+templ ButtonsPage(cfg *config.Config) {
+	@Layout("Precipice - Buttons", cfg) {
 		<section class="container">
 			<h1>Buttons</h1>
 			<p>A UI framework to end all frameworks.</p>

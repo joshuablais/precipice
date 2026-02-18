@@ -2,18 +2,20 @@
 package main
 
 import (
+	"github.com/joshuablais/precipice/internal/config"
 	"log/slog"
 	"net/http"
 	"os"
 )
 
 func main() {
+	cfg := config.LoadConfig()
 	mux := http.NewServeMux()
 
 	// Static file serving
 	mux.Handle("GET /static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
 
-	Routes(mux)
+	Routes(mux, cfg)
 
 	// Routes
 	slog.Info("starting server", "addr", ":3000")

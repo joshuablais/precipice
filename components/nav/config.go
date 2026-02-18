@@ -1,9 +1,6 @@
-// precipice/components/nav/config.go
 package nav
 
-import (
-	"os"
-)
+import "os"
 
 type NavItem struct {
 	Label string
@@ -17,9 +14,9 @@ type AuthButton struct {
 }
 
 type LogoConfig struct {
-	Href       string // Where the logo links to
-	DesktopURL string // Logo image for main nav
-	MobileURL  string // Logo image for mobile menu
+	Href       string
+	DesktopURL string
+	MobileURL  string
 	AltText    string
 }
 
@@ -29,41 +26,9 @@ type NavConfig struct {
 	Logo        LogoConfig
 }
 
-func getEnvOrDefault(key, defaultValue string) string {
+func GetEnvOrDefault(key, defaultValue string) string {
 	if value := os.Getenv(key); value != "" {
 		return value
 	}
 	return defaultValue
-}
-
-func GetNavConfig() NavConfig {
-	return NavConfig{
-		Items: []NavItem{
-			{Label: "Components", Href: "/components"},
-		},
-		AuthButtons: []AuthButton{
-			{
-				Label:   "Log In",
-				Href:    "/login",
-				Variant: "ghost",
-			},
-			{
-				Label:   "Sign Up",
-				Href:    "/register",
-				Variant: "primary",
-			},
-		},
-		Logo: LogoConfig{
-			Href: "/",
-			DesktopURL: getEnvOrDefault(
-				"NAV_LOGO_DESKTOP_URL",
-				"https://cella.b-cdn.net/Revere/revere_logo2.png",
-			),
-			MobileURL: getEnvOrDefault(
-				"NAV_LOGO_MOBILE_URL",
-				"https://cella.b-cdn.net/Revere/revere_logo2.png",
-			),
-			AltText: getEnvOrDefault("APP_NAME", "Logo"),
-		},
-	}
 }

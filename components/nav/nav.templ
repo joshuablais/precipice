@@ -1,4 +1,3 @@
-// /components/nav/navigation.templ
 package nav
 
 import (
@@ -6,24 +5,22 @@ import (
 	"github.com/joshuablais/precipice/components/themetoggle"
 )
 
-// data-store is gone — no JS state needed
-templ Navigation() {
+templ Navigation(cfg NavConfig) {
 	<header class="nav">
 		<div class="nav__inner">
-			@Logo()
-			@DesktopNav()
+			@Logo(cfg)
+			@DesktopNav(cfg)
 			<div class="nav__actions">
 				@themetoggle.ThemeToggle()
-				@DesktopAuthButtons()
+				@DesktopAuthButtons(cfg)
 				@HamburgerButton()
 			</div>
 		</div>
-		@MobileMenu()
+		@MobileMenu(cfg)
 	</header>
 }
 
-templ Logo() {
-	{{ cfg := GetNavConfig() }}
+templ Logo(cfg NavConfig) {
 	<a href={ templ.SafeURL(cfg.Logo.Href) } class="nav__logo">
 		<svg class="nav__logo-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
 			<path d="m8 3 4 8 5-5 5 15H2L8 3z"></path>
@@ -32,9 +29,9 @@ templ Logo() {
 	</a>
 }
 
-templ DesktopNav() {
+templ DesktopNav(cfg NavConfig) {
 	<nav class="nav__links">
-		for _, item := range GetNavConfig().Items {
+		for _, item := range cfg.Items {
 			<a href={ templ.SafeURL(item.Href) } class="nav__link">
 				{ item.Label }
 			</a>
@@ -42,9 +39,9 @@ templ DesktopNav() {
 	</nav>
 }
 
-templ DesktopAuthButtons() {
+templ DesktopAuthButtons(cfg NavConfig) {
 	<div class="nav__auth">
-		for _, authBtn := range GetNavConfig().AuthButtons {
+		for _, authBtn := range cfg.AuthButtons {
 			@button.Button(button.Props{
 				Variant: button.Variant(authBtn.Variant),
 				Size:    button.SizeSm,
@@ -56,8 +53,6 @@ templ DesktopAuthButtons() {
 	</div>
 }
 
-// popovertarget wires the button to the menu — no JS, no aria management needed
-// Switched to span.bar structure so CSS :has() can animate hamburger → X cleanly
 templ HamburgerButton() {
 	@button.Button(button.Props{
 		Variant: button.VariantGhost,
@@ -76,10 +71,7 @@ templ HamburgerButton() {
 	}
 }
 
-templ MobileMenu() {
-	{{ cfg := GetNavConfig() }}
-	// popover attribute is the entire mechanism — backdrop, dismiss, escape, focus all free
-	// manual backdrop div is gone, ::backdrop pseudo-element handles it in CSS
+templ MobileMenu(cfg NavConfig) {
 	<div
 		id="mobile-menu"
 		class="mobile-menu"
@@ -112,10 +104,7 @@ templ MobileMenu() {
 		</div>
 		<nav class="mobile-menu__nav">
 			for _, item := range cfg.Items {
-				<a
-					href={ templ.SafeURL(item.Href) }
-					class="mobile-menu__link"
-				>
+				<a href={ templ.SafeURL(item.Href) } class="mobile-menu__link">
 					{ item.Label }
 				</a>
 			}

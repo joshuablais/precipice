@@ -1,9 +1,10 @@
 package pages
 
 import "github.com/joshuablais/precipice/components/loginform"
+import "github.com/joshuablais/precipice/internal/config"
 
-templ LoginPage() {
-	@Layout("Login") {
+templ LoginPage(cfg *config.Config) {
+	@Layout("Login", cfg) {
 		@form.LoginForm()
 	}
 }

@@ -13,10 +13,10 @@ import templruntime "github.com/a-h/templ/runtime"
 import (
 	"github.com/joshuablais/precipice/components/footer"
 	"github.com/joshuablais/precipice/components/nav"
-	"os"
+	"github.com/joshuablais/precipice/internal/config"
 )
 
-func Layout(title string) templ.Component {
+func Layout(title string, cfg *config.Config) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
@@ -54,7 +54,24 @@ func Layout(title string) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = nav.Navigation().Render(ctx, templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = nav.Navigation(nav.NavConfig{
+			Logo: nav.LogoConfig{
+				Href:    "/",
+				AltText: cfg.SiteName,
+				// DesktopURL, MobileURL from cfg if you add those fields
+			},
+			Items: []nav.NavItem{
+				{Label: "Components", Href: "/components"},
+			},
+			AuthButtons: []nav.AuthButton{
+				{Label: "Log In", Href: "/login", Variant: "ghost"},
+				{Label: "Sign Up", Href: "/register", Variant: "primary"},
+			},
+		}).Render(ctx, templ_7745c5c3_Buffer)
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = templ_7745c5c3_Var1.Render(ctx, templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -71,7 +88,7 @@ func Layout(title string) templ.Component {
 			return templ_7745c5c3_Err
 		}
 		templ_7745c5c3_Err = footer.Footer(footer.FooterProps{
-			Logo:        os.Getenv("ICON_URL"),
+			Logo:        cfg.IconURL,
 			CompanyName: "Revere",
 			Sections: []footer.FooterSection{
 				{
@@ -118,7 +135,6 @@ func Layout(title string) templ.Component {
 			BottomLinks: []footer.FooterLink{
 				{Label: "Terms of Use", Href: "#"},
 				{Label: "Privacy Policy", Href: "/privacy"},
-				{Label: "GDPR", Href: "#"},
 			},
 			ShowStatus: false,
 			StatusHref: "#",

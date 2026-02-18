@@ -2,9 +2,10 @@
 package pages
 
 import "github.com/joshuablais/precipice/components/button"
+import "github.com/joshuablais/precipice/internal/config"
 
-templ ComponentsPage() {
-	@Layout("Components") {
+templ ComponentsPage(cfg *config.Config) {
+	@Layout("Components", cfg) {
 		<section>
 			<h1>Precipice - Components</h1>
 			<div style="display: flex; gap: 0.5rem; margin-top: 1rem;">

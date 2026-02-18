@@ -7,10 +7,11 @@ import (
 	"github.com/joshuablais/precipice/components/header"
 	"github.com/joshuablais/precipice/components/input"
 	"github.com/joshuablais/precipice/components/titles"
+	"github.com/joshuablais/precipice/internal/config"
 )
 
-templ IndexPage() {
-	@Layout("Precipice - Home") {
+templ IndexPage(cfg *config.Config) {
+	@Layout("Precipice - Home", cfg) {
 		<section>
 			@titles.TitleSection(titles.TitleSectionProps{
 				Title:           "Precipice UI",

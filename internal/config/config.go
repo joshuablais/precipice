@@ -23,7 +23,7 @@ type Config struct {
 
 func LoadConfig() *Config {
 	return &Config{
-		SiteName:        getEnv("SITE_NAME", "Revere"),
+		SiteName:        getEnv("SITE_NAME", "PrecipiceUI"),
 		AnalyticsURL:    getEnv("ANALYTICS_URL", "https://stats.labrynth.org/script.js"),
 		WebsiteID:       getEnv("WEBSITE_ID", ""),
 		IconURL:         getEnv("ICON_URL", "https://cella.b-cdn.net/Revere/favicon.ico"),
