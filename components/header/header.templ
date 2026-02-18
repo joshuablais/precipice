@@ -3,12 +3,11 @@ package header
 // import (
 // 		"github.com/joshuablais/precipice/internal/config"
 // )
-
 templ Header(props HeaderProps) {
-    <section class="header-section">
-        <h1 class="header-title">{ props.Headline }</h1>
-        <div class="header-cta">
-            { children... }
-        </div>
-    </section>
+	<section class="header-section">
+		<h1 class="header-title">{ props.Headline }</h1>
+		<div class="header-cta">
+			{ children... }
+		</div>
+	</section>
 }

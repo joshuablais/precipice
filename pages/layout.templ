@@ -20,20 +20,20 @@ templ Layout(title string, cfg *config.Config) {
 		</head>
 		<body class="min-h-screen bg-primary text-foreground">
 			<div>
-@nav.Navigation(nav.NavConfig{
-                Logo: nav.LogoConfig{
-                    Href:    "/",
-                    AltText: cfg.SiteName,
-                    // DesktopURL, MobileURL from cfg if you add those fields
-                },
-                Items: []nav.NavItem{
-                    {Label: "Components", Href: "/components"},
-                },
-                AuthButtons: []nav.AuthButton{
-                    {Label: "Log In", Href: "/login", Variant: "ghost"},
-                    {Label: "Sign Up", Href: "/register", Variant: "primary"},
-                },
-            })
+				@nav.Navigation(nav.NavConfig{
+					Logo: nav.LogoConfig{
+						Href:    "/",
+						AltText: cfg.SiteName,
+						// DesktopURL, MobileURL from cfg if you add those fields
+					},
+					Items: []nav.NavItem{
+						{Label: "Components", Href: "/components"},
+					},
+					AuthButtons: []nav.AuthButton{
+						{Label: "Log In", Href: "/login", Variant: "ghost"},
+						{Label: "Sign Up", Href: "/register", Variant: "primary"},
+					},
+				})
 			</div>
 			<main class="container mx-auto px-4 py-8">
 				{ children... }
