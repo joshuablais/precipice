@@ -27,6 +27,7 @@ CSS has come a long way in the past 5 years, to the point in which we can replac
 **** TODO cards
 **** TODO FAQ (Accordion)
 **** TODO dropdown (nav)
+**** TODO Pricing
 **** TODO Alert
 **** TODO dialogue (modal)
 **** TODO spinner
@@ -44,8 +45,9 @@ CSS has come a long way in the past 5 years, to the point in which we can replac
 **** TODO Animations
 **** TODO Footer configuration ingest
 :LOGBOOK:
-CLOCK: [2026-02-18 Wed 10:03]
+CLOCK: [2026-02-18 Wed 10:03]--[2026-02-18 Wed 10:50] =>  0:47
 :END:
+**** TODO Testimonial section
 
 ** Fixes
 *** DONE fix dark/light theme toggle icon
