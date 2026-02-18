@@ -4,7 +4,7 @@
     align-items: center;
     justify-content: center;
     text-align: center;
-    min-height: 100vh; /* full viewport hero, adjust as needed */
+    min-height: 75vh; 
     padding: 2rem;
 }
 
