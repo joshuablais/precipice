@@ -58,6 +58,10 @@
   animation: ru-fade-up 0.6s ease-out both;
   animation-delay: 0.1s;
 }
+[data-animate="fade-down-load"] {
+  animation: ru-fade-down 0.6s ease-out both;
+  animation-delay: 0.1s;
+}
   /* ==========================================
      SCALE FAMILY
      ========================================== */
