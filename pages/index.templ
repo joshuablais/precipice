@@ -48,12 +48,32 @@ templ IndexPage(cfg *config.Config) {
 					Contribute
 				}
 			}
-
 			@info.InfoLeft(info.InfoProps{
-    Subtext:    "Category",
-    Headertext: "Main Title",
-    Paragraph:  "Body copy here.",
-})
+				Subtext:    "Category",
+				Headertext: "Main Title",
+				Paragraph:  "Lorem ipsum dolor sit amet consectetur adipiscing elit quisque faucibus ex sapien vitae pellentesque sem placerat in id cursus mi pretium tellus duis convallis tempus leo eu aenean sed diam urna tempor pulvinar vivamus fringilla lacus nec metus bibendum egestas iaculis massa nisl malesuada lacinia integer nunc posuere ut hendrerit.",
+				ImgSrc:     "https://cella.b-cdn.net/joshblais/mastery.jpeg",
+			}) {
+				@button.Button(button.Props{
+					Variant: button.VariantPrimary,
+					Href:    "/components",
+				}) {
+					Components
+				}
+			}
+			@info.InfoRight(info.InfoProps{
+				Subtext:    "Category",
+				Headertext: "Main Title",
+				Paragraph:  "Lorem ipsum dolor sit amet consectetur adipiscing elit quisque faucibus ex sapien vitae pellentesque sem placerat in id cursus mi pretium tellus duis convallis tempus leo eu aenean sed diam urna tempor pulvinar vivamus fringilla lacus nec metus bibendum egestas iaculis massa nisl malesuada lacinia integer nunc posuere ut hendrerit.",
+				ImgSrc:     "https://cella.b-cdn.net/joshblais/mastery.jpeg",
+			}) {
+				@button.Button(button.Props{
+					Variant: button.VariantPrimary,
+					Href:    "/components",
+				}) {
+					Components
+				}
+			}
 			@input.Input("email", "email", "you@example.com")
 			@input.InputWithLabel("email", "email", "Email", "you@example.com")
 			@form.FormGroup("email", "Email") {

@@ -1,0 +1,26 @@
+.info-left,
+.info-right {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 2rem;
+    max-width: 70%;
+    margin-inline: auto;
+    margin-block: 40px; 
+}
+
+@media (max-width: 768px) {
+    .info-left,
+    .info-right {
+        grid-template-columns: 1fr;
+        max-width: 90%;
+    }
+}
+
+.info-img {
+      border-radius: 4px;
+}
+
+.info-paragraph {
+    margin-block: 10px;
+}

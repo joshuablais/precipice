@@ -1,0 +1,37 @@
+package info
+
+type InfoProps struct {
+	Subtext    string
+	Headertext string
+	Paragraph  string
+	ImgSrc     string
+	ImgAlt     string
+}
+
+templ Info(props InfoProps) {
+		<div className="info">
+			<h3 class="info-subtext">{ props.Subtext }</h3>
+			<h1 class="info-header">{ props.Headertext }</h1>
+			<p class="info-paragraph">{ props.Paragraph }</p>
+			{ children... }
+		</div>
+
+}
+
+templ InfoLeft(props InfoProps) {
+	<section class="info-left">
+		@Info(props) {
+			{ children... }
+		}
+		<img src={ props.ImgSrc } alt={ props.ImgAlt } class="info-img"/>
+	</section>
+}
+
+templ InfoRight(props InfoProps) {
+	<section class="info-right">
+		<img src={ props.ImgSrc } alt={ props.ImgAlt } class="info-img"/>
+		@Info(props) {
+			{ children... }
+		}
+	</section>
+}
