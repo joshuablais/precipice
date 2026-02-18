@@ -9,29 +9,30 @@ type InfoProps struct {
 }
 
 templ Info(props InfoProps) {
-		<div className="info">
-			<h3 class="info-subtext">{ props.Subtext }</h3>
-			<h1 class="info-header">{ props.Headertext }</h1>
-			<p class="info-paragraph">{ props.Paragraph }</p>
-			{ children... }
-		</div>
-
+	<h3 class="info-subtext">{ props.Subtext }</h3>
+	<h1 class="info-header">{ props.Headertext }</h1>
+	<p class="info-paragraph">{ props.Paragraph }</p>
+	{ children... }
 }
 
 templ InfoLeft(props InfoProps) {
 	<section class="info-left">
-		@Info(props) {
-			{ children... }
-		}
-		<img src={ props.ImgSrc } alt={ props.ImgAlt } class="info-img"/>
+		<div className="info" data-animate="fade-right">
+			@Info(props) {
+				{ children... }
+			}
+		</div>
+		<img src={ props.ImgSrc } alt={ props.ImgAlt } class="info-img" data-animate="fade-left"/>
 	</section>
 }
 
 templ InfoRight(props InfoProps) {
 	<section class="info-right">
-		<img src={ props.ImgSrc } alt={ props.ImgAlt } class="info-img"/>
-		@Info(props) {
-			{ children... }
-		}
+		<img src={ props.ImgSrc } alt={ props.ImgAlt } class="info-img" data-animate="fade-right"/>
+		<div className="info" data-animate="fade-left">
+			@Info(props) {
+				{ children... }
+			}
+		</div>
 	</section>
 }

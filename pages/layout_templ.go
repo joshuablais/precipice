@@ -117,10 +117,9 @@ func Layout(title string, cfg *config.Config) templ.Component {
 					},
 				},
 				{
-					Title: "Legal",
+					Title: "Links",
 					Links: []footer.FooterLink{
-						{Label: "Privacy", Href: "/privacy"},
-						{Label: "Terms", Href: "#"},
+						{Label: "", Href: "http://github.com/joshuablais/precipice"},
 					},
 				},
 			},
@@ -129,8 +128,7 @@ func Layout(title string, cfg *config.Config) templ.Component {
 				Description: "The latest news, articles, and resources, sent to your inbox weekly.",
 			},
 			BottomLinks: []footer.FooterLink{
-				{Label: "Terms of Use", Href: "#"},
-				{Label: "Privacy Policy", Href: "/privacy"},
+				{Label: "", Href: "http://github.com/joshuablais/precipice"},
 			},
 			ShowStatus: false,
 			StatusHref: "#",

@@ -72,10 +72,9 @@ templ Layout(title string, cfg *config.Config) {
 						},
 					},
 					{
-						Title: "Legal",
+						Title: "Links",
 						Links: []footer.FooterLink{
-							{Label: "Privacy", Href: "/privacy"},
-							{Label: "Terms", Href: "#"},
+							{Label: "", Href: "http://github.com/joshuablais/precipice"},
 						},
 					},
 				},
@@ -84,8 +83,7 @@ templ Layout(title string, cfg *config.Config) {
 					Description: "The latest news, articles, and resources, sent to your inbox weekly.",
 				},
 				BottomLinks: []footer.FooterLink{
-					{Label: "Terms of Use", Href: "#"},
-					{Label: "Privacy Policy", Href: "/privacy"},
+					{Label: "", Href: "http://github.com/joshuablais/precipice"},
 				},
 				ShowStatus: false,
 				StatusHref: "#",
