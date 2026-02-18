@@ -3,6 +3,14 @@ package form
 
 import "fmt"
 
+type FieldVariant string
+
+const (
+	VariantDefault  FieldVariant = "default"
+	VariantOutlined FieldVariant = "outlined"
+	VariantGhost    FieldVariant = "ghost" // minimal, underline-only — useful for inline edits
+)
+
 type FieldProps struct {
 	ID          string
 	Name        string
@@ -11,10 +19,22 @@ type FieldProps struct {
 	Placeholder string
 	Value       string
 	Error       string
+	Variant     FieldVariant
 	HelpText    string
 	Required    bool
 	Disabled    bool
 	Class       string
+}
+
+func (p FieldProps) variantClass() string {
+	switch p.Variant {
+	case VariantOutlined:
+		return "form-field__input--outlined"
+	case VariantGhost:
+		return "form-field__input--ghost"
+	default:
+		return "form-field__input--default"
+	}
 }
 
 templ Field(props FieldProps) {
@@ -28,7 +48,7 @@ templ Field(props FieldProps) {
 			</label>
 		}
 		<input
-			class={ "form-field__input", props.Class }
+			class={ "form-field__input", props.variantClass(), props.Class }
 			type={ props.Type }
 			id={ props.ID }
 			name={ props.Name }

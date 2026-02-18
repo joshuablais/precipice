@@ -12,6 +12,14 @@ import templruntime "github.com/a-h/templ/runtime"
 
 import "fmt"
 
+type FieldVariant string
+
+const (
+	VariantDefault  FieldVariant = "default"
+	VariantOutlined FieldVariant = "outlined"
+	VariantGhost    FieldVariant = "ghost" // minimal, underline-only — useful for inline edits
+)
+
 type FieldProps struct {
 	ID          string
 	Name        string
@@ -20,10 +28,22 @@ type FieldProps struct {
 	Placeholder string
 	Value       string
 	Error       string
+	Variant     FieldVariant
 	HelpText    string
 	Required    bool
 	Disabled    bool
 	Class       string
+}
+
+func (p FieldProps) variantClass() string {
+	switch p.Variant {
+	case VariantOutlined:
+		return "form-field__input--outlined"
+	case VariantGhost:
+		return "form-field__input--ghost"
+	default:
+		return "form-field__input--default"
+	}
 }
 
 func Field(props FieldProps) templ.Component {
@@ -77,7 +97,7 @@ func Field(props FieldProps) templ.Component {
 			var templ_7745c5c3_Var4 string
 			templ_7745c5c3_Var4, templ_7745c5c3_Err = templ.JoinStringErrs(props.ID)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/form/field.templ`, Line: 23, Col: 50}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/form/field.templ`, Line: 43, Col: 50}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var4))
 			if templ_7745c5c3_Err != nil {
@@ -90,7 +110,7 @@ func Field(props FieldProps) templ.Component {
 			var templ_7745c5c3_Var5 string
 			templ_7745c5c3_Var5, templ_7745c5c3_Err = templ.JoinStringErrs(props.Label)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/form/field.templ`, Line: 24, Col: 17}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/form/field.templ`, Line: 44, Col: 17}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var5))
 			if templ_7745c5c3_Err != nil {
@@ -111,7 +131,7 @@ func Field(props FieldProps) templ.Component {
 				return templ_7745c5c3_Err
 			}
 		}
-		var templ_7745c5c3_Var6 = []any{"form-field__input", props.Class}
+		var templ_7745c5c3_Var6 = []any{"form-field__input", props.variantClass(), props.Class}
 		templ_7745c5c3_Err = templ.RenderCSSItems(ctx, templ_7745c5c3_Buffer, templ_7745c5c3_Var6...)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
@@ -136,7 +156,7 @@ func Field(props FieldProps) templ.Component {
 		var templ_7745c5c3_Var8 string
 		templ_7745c5c3_Var8, templ_7745c5c3_Err = templ.JoinStringErrs(props.Type)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/form/field.templ`, Line: 32, Col: 20}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/form/field.templ`, Line: 52, Col: 20}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var8))
 		if templ_7745c5c3_Err != nil {
@@ -149,7 +169,7 @@ func Field(props FieldProps) templ.Component {
 		var templ_7745c5c3_Var9 string
 		templ_7745c5c3_Var9, templ_7745c5c3_Err = templ.JoinStringErrs(props.ID)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/form/field.templ`, Line: 33, Col: 16}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/form/field.templ`, Line: 53, Col: 16}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var9))
 		if templ_7745c5c3_Err != nil {
@@ -162,7 +182,7 @@ func Field(props FieldProps) templ.Component {
 		var templ_7745c5c3_Var10 string
 		templ_7745c5c3_Var10, templ_7745c5c3_Err = templ.JoinStringErrs(props.Name)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/form/field.templ`, Line: 34, Col: 20}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/form/field.templ`, Line: 54, Col: 20}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var10))
 		if templ_7745c5c3_Err != nil {
@@ -175,7 +195,7 @@ func Field(props FieldProps) templ.Component {
 		var templ_7745c5c3_Var11 string
 		templ_7745c5c3_Var11, templ_7745c5c3_Err = templ.JoinStringErrs(props.Placeholder)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/form/field.templ`, Line: 35, Col: 34}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/form/field.templ`, Line: 55, Col: 34}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var11))
 		if templ_7745c5c3_Err != nil {
@@ -188,7 +208,7 @@ func Field(props FieldProps) templ.Component {
 		var templ_7745c5c3_Var12 string
 		templ_7745c5c3_Var12, templ_7745c5c3_Err = templ.JoinStringErrs(props.Value)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/form/field.templ`, Line: 36, Col: 22}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/form/field.templ`, Line: 56, Col: 22}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var12))
 		if templ_7745c5c3_Err != nil {
@@ -217,7 +237,7 @@ func Field(props FieldProps) templ.Component {
 		var templ_7745c5c3_Var13 string
 		templ_7745c5c3_Var13, templ_7745c5c3_Err = templ.JoinStringErrs(fmt.Sprintf("%s-hint", props.ID))
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/form/field.templ`, Line: 39, Col: 54}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/form/field.templ`, Line: 59, Col: 54}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var13))
 		if templ_7745c5c3_Err != nil {
@@ -235,7 +255,7 @@ func Field(props FieldProps) templ.Component {
 			var templ_7745c5c3_Var14 string
 			templ_7745c5c3_Var14, templ_7745c5c3_Err = templ.JoinStringErrs(fmt.Sprintf("%s-error", props.ID))
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/form/field.templ`, Line: 42, Col: 57}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/form/field.templ`, Line: 62, Col: 57}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var14))
 			if templ_7745c5c3_Err != nil {
@@ -258,7 +278,7 @@ func Field(props FieldProps) templ.Component {
 			var templ_7745c5c3_Var15 string
 			templ_7745c5c3_Var15, templ_7745c5c3_Err = templ.JoinStringErrs(fmt.Sprintf("%s-error", props.ID))
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/form/field.templ`, Line: 46, Col: 73}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/form/field.templ`, Line: 66, Col: 73}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var15))
 			if templ_7745c5c3_Err != nil {
@@ -271,7 +291,7 @@ func Field(props FieldProps) templ.Component {
 			var templ_7745c5c3_Var16 string
 			templ_7745c5c3_Var16, templ_7745c5c3_Err = templ.JoinStringErrs(props.Error)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/form/field.templ`, Line: 47, Col: 17}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/form/field.templ`, Line: 67, Col: 17}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var16))
 			if templ_7745c5c3_Err != nil {
@@ -290,7 +310,7 @@ func Field(props FieldProps) templ.Component {
 			var templ_7745c5c3_Var17 string
 			templ_7745c5c3_Var17, templ_7745c5c3_Err = templ.JoinStringErrs(fmt.Sprintf("%s-hint", props.ID))
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/form/field.templ`, Line: 51, Col: 71}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/form/field.templ`, Line: 71, Col: 71}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var17))
 			if templ_7745c5c3_Err != nil {
@@ -303,7 +323,7 @@ func Field(props FieldProps) templ.Component {
 			var templ_7745c5c3_Var18 string
 			templ_7745c5c3_Var18, templ_7745c5c3_Err = templ.JoinStringErrs(props.HelpText)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/form/field.templ`, Line: 52, Col: 20}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/form/field.templ`, Line: 72, Col: 20}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var18))
 			if templ_7745c5c3_Err != nil {

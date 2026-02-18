@@ -40,7 +40,7 @@ templ Layout(title string, cfg *config.Config) {
 			</main>
 			@footer.Footer(footer.FooterProps{
 				Logo:        cfg.IconURL,
-				CompanyName: "Revere",
+				CompanyName: cfg.SiteName,
 				Sections: []footer.FooterSection{
 					{
 						Title: "Solutions",

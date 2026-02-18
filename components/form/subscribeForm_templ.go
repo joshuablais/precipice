@@ -41,6 +41,7 @@ func SubscribeForm() templ.Component {
 			Type:        "email",
 			Placeholder: "Enter your email",
 			Required:    true,
+			Variant:     VariantOutlined,
 		}).Render(ctx, templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err

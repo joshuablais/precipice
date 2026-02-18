@@ -85,7 +85,7 @@ func Layout(title string, cfg *config.Config) templ.Component {
 		}
 		templ_7745c5c3_Err = footer.Footer(footer.FooterProps{
 			Logo:        cfg.IconURL,
-			CompanyName: "Revere",
+			CompanyName: cfg.SiteName,
 			Sections: []footer.FooterSection{
 				{
 					Title: "Solutions",
