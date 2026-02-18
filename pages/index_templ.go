@@ -14,6 +14,7 @@ import (
 	"github.com/joshuablais/precipice/components/button"
 	"github.com/joshuablais/precipice/components/form"
 	"github.com/joshuablais/precipice/components/header"
+	"github.com/joshuablais/precipice/components/info"
 	"github.com/joshuablais/precipice/components/input"
 	"github.com/joshuablais/precipice/components/titles"
 	"github.com/joshuablais/precipice/internal/config"
@@ -180,6 +181,14 @@ func IndexPage(cfg *config.Config) templ.Component {
 			templ_7745c5c3_Err = header.Header(header.HeaderProps{
 				Headline: "Testing",
 			}).Render(templ.WithChildren(ctx, templ_7745c5c3_Var6), templ_7745c5c3_Buffer)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = info.InfoLeft(info.InfoProps{
+				Subtext:    "Category",
+				Headertext: "Main Title",
+				Paragraph:  "Body copy here.",
+			}).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}

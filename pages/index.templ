@@ -5,6 +5,7 @@ import (
 	"github.com/joshuablais/precipice/components/button"
 	"github.com/joshuablais/precipice/components/form"
 	"github.com/joshuablais/precipice/components/header"
+	"github.com/joshuablais/precipice/components/info"
 	"github.com/joshuablais/precipice/components/input"
 	"github.com/joshuablais/precipice/components/titles"
 	"github.com/joshuablais/precipice/internal/config"
@@ -47,6 +48,12 @@ templ IndexPage(cfg *config.Config) {
 					Contribute
 				}
 			}
+
+			@info.InfoLeft(info.InfoProps{
+    Subtext:    "Category",
+    Headertext: "Main Title",
+    Paragraph:  "Body copy here.",
+})
 			@input.Input("email", "email", "you@example.com")
 			@input.InputWithLabel("email", "email", "Email", "you@example.com")
 			@form.FormGroup("email", "Email") {
