@@ -14,10 +14,9 @@ type AuthButton struct {
 }
 
 type LogoConfig struct {
-	Href       string
-	DesktopURL string
-	MobileURL  string
-	AltText    string
+	Href    string
+	Image   string
+	AltText string
 }
 
 type NavConfig struct {

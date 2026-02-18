@@ -58,7 +58,7 @@ func Layout(title string, cfg *config.Config) templ.Component {
 			Logo: nav.LogoConfig{
 				Href:    "/",
 				AltText: cfg.SiteName,
-				// DesktopURL, MobileURL from cfg if you add those fields
+				Image:   cfg.IconURL,
 			},
 			Items: []nav.NavItem{
 				{Label: "Components", Href: "/components"},

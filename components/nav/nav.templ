@@ -22,9 +22,9 @@ templ Navigation(cfg NavConfig) {
 
 templ Logo(cfg NavConfig) {
 	<a href={ templ.SafeURL(cfg.Logo.Href) } class="nav__logo">
-		<svg class="nav__logo-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-			<path d="m8 3 4 8 5-5 5 15H2L8 3z"></path>
-		</svg>
+		if cfg.Logo.Image != "" {
+			<img src={ cfg.Logo.Image } alt={ cfg.Logo.AltText } class="nav__logo-icon"/>
+		}
 		<span>{ cfg.Logo.AltText }</span>
 	</a>
 }
