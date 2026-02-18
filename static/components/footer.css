@@ -34,11 +34,12 @@
     grid-template-columns: repeat(4, 1fr);
   }
 
-  .footer__newsletter {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
+.footer__newsletter {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  width: 100%;
+}
 }
 
 .footer__section-title {
