@@ -26,7 +26,7 @@ func LoadConfig() *Config {
 		SiteName:        getEnv("SITE_NAME", "PrecipiceUI"),
 		AnalyticsURL:    getEnv("ANALYTICS_URL", "https://stats.labrynth.org/script.js"),
 		WebsiteID:       getEnv("WEBSITE_ID", ""),
-		IconURL:         getEnv("ICON_URL", "https://cella.b-cdn.net/Revere/favicon.ico"),
+		IconURL:         getEnv("ICON_URL", "https://cella.b-cdn.net/precipiceUI/precipice.png"),
 		Token:           getEnv("TOKEN", "12345"),
 		BlogDir:         getEnv("BLOG_DIR", defaultBlogDir()),
 		Environment:     getEnv("ENVIRONMENT", "development"),
