@@ -62,6 +62,7 @@ func Layout(title string, cfg *config.Config) templ.Component {
 			},
 			Items: []nav.NavItem{
 				{Label: "Components", Href: "/components"},
+				{Label: "Documentation", Href: "https://docs.precipiceui.com"},
 			},
 			AuthButtons: []nav.AuthButton{
 				{Label: "Log In", Href: "/login", Variant: "ghost"},

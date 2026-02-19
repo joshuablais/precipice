@@ -1,0 +1,23 @@
+package accordion
+
+type Item struct {
+	Question string
+	Answer   string
+}
+
+type AccordionProps struct {
+	Items []Item
+}
+
+templ Accordion(props AccordionProps) {
+	<div class="accordion">
+		for _, item := range props.Items {
+			<details class="accordion__item">
+				<summary class="accordion__question">{ item.Question }</summary>
+				<div class="accordion__answer">
+					<p>{ item.Answer }</p>
+				</div>
+			</details>
+		}
+	</div>
+}

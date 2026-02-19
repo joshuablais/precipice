@@ -1,0 +1,39 @@
+.accordion {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 100%;
+}
+
+.accordion__item {
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.accordion__question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.25rem;
+    cursor: pointer;
+    list-style: none; /* removes default marker */
+    font-weight: 600;
+    user-select: none;
+}
+
+/* Custom marker via pseudo-element */
+.accordion__question::after {
+    content: '+';
+    font-size: 1.25rem;
+    transition: transform 0.2s ease;
+}
+
+details[open] .accordion__question::after {
+    content: '−';
+}
+
+.accordion__answer {
+    padding: 0 1.25rem 1rem;
+    line-height: 1.6;
+}
