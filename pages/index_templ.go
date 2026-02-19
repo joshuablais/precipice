@@ -140,7 +140,9 @@ func IndexPage(cfg *config.Config) templ.Component {
 			templ_7745c5c3_Err = testimonials.Companies(testimonials.CompaniesProps{
 				HeaderText: "Trusted by Prolific Brands",
 				CompanyLogos: []testimonials.CompanyLogo{
-					{Src: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn.imgbin.com%2F19%2F17%2F3%2Fimgbin-2-percent-realty-excellence-estate-agent-multiple-listing-service-real-estate-kamloops-real-estate-company-logo-EgNWwggQ2nrz4LzYqVpJCM3zq.jpg&f=1&nofb=1&ipt=e911f7f838ccf476f2c07d406826a3df4b9bae8b073626245bdcd2db18615591", Alt: "Acme Corp"},
+					{Src: "https://rankmyagent.com/upload/brokerage/NRFCW8.PNG", Alt: "Acme Corp"},
+					{Src: "https://rankmyagent.com/upload/brokerage/NRFCW8.PNG", Alt: "Acme Corp"},
+					{Src: "https://rankmyagent.com/upload/brokerage/NRFCW8.PNG", Alt: "Acme Corp"},
 					{Src: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Flogospng.org%2Fdownload%2Fremax%2Flogo-remax-4096.png&f=1&nofb=1&ipt=13ecd1607d11472bc08e1d7bcd01000391fef80708c8a41a9004b1088bf1e9a2", Alt: "Acme Corp"},
 				},
 			}).Render(ctx, templ_7745c5c3_Buffer)

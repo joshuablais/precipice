@@ -1,21 +1,21 @@
 .companies {
     margin-top: 20px;
     margin-bottom: 20px;
+    width: 100%;
 }
 
 .logos {
-  display: flex;
-  flex-direction: row;
+  filter: grayscale(100%);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 20px;
-  justify-content: center;
-  align-items: center;
-  max-width: 65vw;
-  margin: 0 auto;
+  align-items: center; 
 }
 
-.logos img{
-    filter: grayscale(100%);
-    width: 100px;
-    height: auto;
-    margin-top: 10px;
+.logos img {
+  width: 100%;       
+  height: auto;      
+  max-width: 300px;  
+  display: block;
+  margin: 0 auto;    
 }
