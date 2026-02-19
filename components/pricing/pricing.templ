@@ -1,0 +1,30 @@
+package pricing
+
+import "github.com/joshuablais/precipice/components/button"
+
+type PricingTier struct {
+		Name string
+		Subtitle string
+		Price string
+		Features []string
+		Popular bool
+}
+
+type PricingSectionProps struct {
+	Headline    string
+	Subheadline string
+	Tiers       []PricingTier
+}
+
+templ PricingSection(props PricingSectionProps) {
+		
+}
+
+templ PricingCard() {
+		@button.Button(button.Props{
+			Variant: button.VariantPrimary,
+			Href: "/contact",
+		}) {
+			Contact Us
+		}
+}

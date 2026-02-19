@@ -25,9 +25,11 @@ CSS has come a long way in the past 5 years, to the point in which we can replac
 *** TODO Components to build out
 **** TODO Form
 **** TODO cards
-**** TODO FAQ (Accordion)
 **** TODO dropdown (nav)
-**** TODO Pricing
+**** STRT Pricing
+:LOGBOOK:
+CLOCK: [2026-02-19 Thu 08:51]
+:END:
 **** TODO Alert
 **** TODO dialogue (modal)
 **** TODO spinner
@@ -43,10 +45,6 @@ CSS has come a long way in the past 5 years, to the point in which we can replac
 **** TODO carousel
 **** TODO slider
 **** TODO Animations
-**** TODO Footer configuration ingest
-:LOGBOOK:
-CLOCK: [2026-02-18 Wed 10:03]--[2026-02-18 Wed 10:50] =>  0:47
-:END:
 **** TODO Testimonial section
 
 ** Fixes
@@ -54,4 +52,11 @@ CLOCK: [2026-02-18 Wed 10:03]--[2026-02-18 Wed 10:50] =>  0:47
 CLOSED: [2026-02-12 Thu 15:23]
 *** DONE Fix navbar coupling and permit it to be configured in the app.config
 CLOSED: [2026-02-18 Wed 07:51]
+**** DONE FAQ (Accordion)
+CLOSED: [2026-02-19 Thu 08:49]
+**** DONE Footer configuration ingest
+CLOSED: [2026-02-19 Thu 08:49]
+:LOGBOOK:
+CLOCK: [2026-02-18 Wed 10:03]--[2026-02-18 Wed 10:50] =>  0:47
+:END:
 
