@@ -1,0 +1,21 @@
+.companies {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.logos {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  max-width: 65vw;
+  margin: 0 auto;
+}
+
+.logos img{
+    filter: grayscale(100%);
+    width: 100px;
+    height: auto;
+    margin-top: 10px;
+}

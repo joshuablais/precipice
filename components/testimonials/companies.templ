@@ -1,0 +1,25 @@
+package testimonials
+
+type CompaniesProps struct {
+	HeaderText   string
+	CompanyLogos []CompanyLogo
+}
+
+type CompanyLogo struct {
+	Src string
+	Alt string
+}
+
+templ Companies(props CompaniesProps) {
+	<div class="companies">
+		<h1 class="container center">{ props.HeaderText }</h1>
+		<div class="logos center">
+			for _, logo := range props.CompanyLogos {
+				<img
+					src={ logo.Src }
+					alt={ logo.Alt }
+				/>
+			}
+		</div>
+	</div>
+}
