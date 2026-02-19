@@ -50,7 +50,7 @@ func Layout(title string, cfg *config.Config) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, " - Precipice</title><link rel=\"stylesheet\" href=\"/static/main.css\"><!-- Use local Datastar --><script type=\"module\" src=\"/static/datastar.js\"></script></head><body class=\"min-h-screen bg-primary text-foreground\"><div>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, " - Precipice</title><link rel=\"stylesheet\" href=\"/static/main.css\"><!-- Use local Datastar --><script type=\"module\" src=\"/static/datastar.js\"></script></head><body class=\"\"><div>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -72,7 +72,7 @@ func Layout(title string, cfg *config.Config) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 3, "</div><main class=\"container mx-auto px-4 py-8\">")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 3, "</div><main class=\"\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

@@ -18,7 +18,7 @@ templ Layout(title string, cfg *config.Config) {
 			<!-- Use local Datastar -->
 			<script type="module" src="/static/datastar.js"></script>
 		</head>
-		<body class="min-h-screen bg-primary text-foreground">
+		<body class="">
 			<div>
 				@nav.Navigation(nav.NavConfig{
 					Logo: nav.LogoConfig{
@@ -36,7 +36,7 @@ templ Layout(title string, cfg *config.Config) {
 					},
 				})
 			</div>
-			<main class="container mx-auto px-4 py-8">
+			<main class="">
 				{ children... }
 			</main>
 			@footer.Footer(footer.FooterProps{

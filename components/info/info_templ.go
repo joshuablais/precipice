@@ -109,7 +109,7 @@ func InfoLeft(props InfoProps) templ.Component {
 			templ_7745c5c3_Var5 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 5, "<section class=\"info-left\"><div className=\"info\" data-animate=\"fade-right\">")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 5, "<section class=\"info-left\"><div class=\"info\" data-animate=\"fade-right\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -216,7 +216,7 @@ func InfoRight(props InfoProps) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 11, "\" class=\"info-img\" data-animate=\"fade-right\"><div className=\"info\" data-animate=\"fade-left\">")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 11, "\" class=\"info-img\" data-animate=\"fade-right\"><div class=\"info\" data-animate=\"fade-left\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

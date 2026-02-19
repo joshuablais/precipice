@@ -17,7 +17,7 @@ templ Info(props InfoProps) {
 
 templ InfoLeft(props InfoProps) {
 	<section class="info-left">
-		<div className="info" data-animate="fade-right">
+		<div class="info" data-animate="fade-right">
 			@Info(props) {
 				{ children... }
 			}
@@ -29,7 +29,7 @@ templ InfoLeft(props InfoProps) {
 templ InfoRight(props InfoProps) {
 	<section class="info-right">
 		<img src={ props.ImgSrc } alt={ props.ImgAlt } class="info-img" data-animate="fade-right"/>
-		<div className="info" data-animate="fade-left">
+		<div class="info" data-animate="fade-left">
 			@Info(props) {
 				{ children... }
 			}
