@@ -7,15 +7,16 @@
 .logos {
   filter: grayscale(100%);
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 20px;
-  align-items: center; 
+  grid-template-columns: repeat(auto-fit, 100px);
+  gap: 100px;
+  align-items: center;
+  justify-content: center;
+    margin-top: 50px;
 }
 
 .logos img {
-  width: 100%;       
   height: auto;      
-  max-width: 300px;  
+  max-width: 100px;  
   display: block;
   margin: 0 auto;    
 }
