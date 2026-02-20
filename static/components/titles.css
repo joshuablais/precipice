@@ -5,6 +5,8 @@
   min-height: 300px; /* Ensure there's height to center within */
   align-items: center;      /* Vertically center the container */
   justify-content: center;   /* Horizontally center the container */
+    overflow: hidden;
+    isolation: isolate;
 }
 
 /*     Overlay (only meaningful on BgImage)                              */

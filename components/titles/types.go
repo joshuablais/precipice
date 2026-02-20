@@ -4,7 +4,6 @@ package titles
 
 import (
 	"fmt"
-	"github.com/a-h/templ"
 	"strings"
 )
 
@@ -66,9 +65,9 @@ func (p TitleSectionProps) classes() string {
 	}, " ")
 }
 
-func (p TitleSectionProps) style() templ.SafeCSS {
+func (p TitleSectionProps) style() string {
 	if p.Background == BgImage && p.BackgroundImage != "" {
-		return templ.SafeCSS(fmt.Sprintf("--ts-bg-image: url('%s')", p.BackgroundImage))
+		return fmt.Sprintf("--ts-bg-image: url('%s')", p.BackgroundImage)
 	}
 	return ""
 }

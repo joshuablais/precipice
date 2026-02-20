@@ -3,6 +3,9 @@ package titles
 
 templ TitleSection(props TitleSectionProps) {
 	<section class={ props.classes() } style={ templ.SafeCSS(props.style()) }>
+		if props.Background == BgImage && props.BackgroundImage != "" {
+			<div class="title-section__bg-image" aria-hidden="true"></div>
+		}
 		<div class="title-section__overlay" aria-hidden="true"></div>
 		<div class="title-section__container">
 			if props.Announcement != nil {
@@ -10,7 +13,7 @@ templ TitleSection(props TitleSectionProps) {
 					<span>{ props.Announcement.Text }</span>
 					<a href={ templ.SafeURL(props.Announcement.Href) }>
 						{ props.Announcement.LinkText }
-						<span aria-hidden="true">→</span>
+						<span aria-hidden="true"> </span>
 					</a>
 				</div>
 			}
@@ -18,7 +21,6 @@ templ TitleSection(props TitleSectionProps) {
 			if props.Subtitle != "" {
 				<p class="title-section__subtitle" data-animate="fade-left-load">{ props.Subtitle }</p>
 			}
-			// Children are your Button components — zero coupling
 			<div class="title-section__cta" data-animate="fade-up-load">
 				{ children... }
 			</div>
