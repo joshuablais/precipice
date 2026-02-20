@@ -2,30 +2,27 @@
 .title-section {
   position: relative;
   width: 100%;
-  min-height: 300px; /* Ensure there's height to center within */
-  align-items: center;      /* Vertically center the container */
-  justify-content: center;   /* Horizontally center the container */
-    overflow: hidden;
-    isolation: isolate;
+  min-height: 300px;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  isolation: isolate;
 }
-
 /*     Overlay (only meaningful on BgImage)                              */
 .title-section__overlay {
   position: absolute;
   inset: 0;
   background: transparent;
   pointer-events: none;
-  z-index: 0;
+  z-index: 1;
 }
 .title-section--image .title-section__overlay {
   background: rgba(0, 0, 0, 0.45);
 }
-
 /*     Sizes                                                             */
 .title-section--sm { padding: 3rem 1.5rem; }
 .title-section--md { padding: 5.5rem 1.5rem; }
 .title-section--lg { padding: 9rem 1.5rem; }
-
 /*     Backgrounds                                                       */
 .title-section--dark {
   background-color: #0f1117;
@@ -50,11 +47,10 @@
   background-color: #ffffff;
   color: #111827;
 }
-
 /*     Container                                                         */
 .title-section__container {
   position: relative;
-  z-index: 1;
+  z-index: 2;
   width: 100%;
   max-width: 56rem;
   margin: 0 auto;
@@ -63,7 +59,6 @@
   flex-direction: column;
   align-items: flex-start;
 }
-
 /*     Alignment variants                                                */
 .title-section--center .title-section__container,
 .title-section--image.title-section--center .title-section__container,
@@ -71,12 +66,10 @@
   text-align: center;
   align-items: center;
 }
-
 .title-section--left .title-section__container {
   text-align: left;
   align-items: flex-start;
 }
-
 /*     Announcement badge                                                */
 .title-section__announcement {
   display: inline-flex;
@@ -106,7 +99,6 @@
 .title-section__announcement a:hover {
   color: #a5b4fc;
 }
-
 /*     Title                                                             */
 .title-section__title {
   margin: 0 0 1.25rem;
@@ -115,7 +107,6 @@
   line-height: 1.08;
   letter-spacing: -0.025em;
 }
-
 /* Image variant: Revere-style spaced caps */
 .title-section--image .title-section__title {
   font-size: clamp(1.5rem, 3.5vw, 2.75rem);
@@ -123,7 +114,6 @@
   text-transform: uppercase;
   font-weight: 600;
 }
-
 /*     Subtitle                                                          */
 .title-section__subtitle {
   margin: 0 0 2.25rem;
@@ -132,7 +122,6 @@
   opacity: 0.7;
   max-width: 42rem;
 }
-
 /*     CTA slot                                                          */
 .title-section__cta {
   display: flex;
@@ -141,12 +130,10 @@
   align-items: center;
   justify-content: flex-start;
 }
-
 .title-section--center .title-section__cta,
 .title-section--image .title-section__cta {
   justify-content: center;
 }
-
 .title-section__cta:empty {
   display: none;
 }

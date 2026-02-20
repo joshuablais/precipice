@@ -67,7 +67,7 @@ func (p TitleSectionProps) classes() string {
 
 func (p TitleSectionProps) style() string {
 	if p.Background == BgImage && p.BackgroundImage != "" {
-		return fmt.Sprintf("--ts-bg-image: url('%s')", p.BackgroundImage)
+		return fmt.Sprintf("--ts-bg-image: url(%s)", p.BackgroundImage)
 	}
 	return ""
 }
