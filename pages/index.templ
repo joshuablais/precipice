@@ -5,6 +5,7 @@ import (
 	"github.com/joshuablais/precipice/components/accordion"
 	"github.com/joshuablais/precipice/components/button"
 	"github.com/joshuablais/precipice/components/info"
+	"github.com/joshuablais/precipice/components/lighthouse"
 	"github.com/joshuablais/precipice/components/testimonials"
 	"github.com/joshuablais/precipice/components/titles"
 	"github.com/joshuablais/precipice/internal/config"
@@ -77,6 +78,14 @@ templ IndexPage(cfg *config.Config) {
 						{Question: "What is this?", Answer: "A reusable FAQ component."},
 						{Question: "Does it need JS?", Answer: "No. details/summary handles it natively."},
 					},
+				})
+			</div>
+			<div class="container">
+				@lighthouse.LighthouseScores([]lighthouse.ScoreItem{
+					{Label: "Performance", Score: 100},
+					{Label: "Accessibility", Score: 100},
+					{Label: "Best Practices", Score: 100},
+					{Label: "SEO", Score: 100},
 				})
 			</div>
 		</section>

@@ -14,6 +14,7 @@ import (
 	"github.com/joshuablais/precipice/components/accordion"
 	"github.com/joshuablais/precipice/components/button"
 	"github.com/joshuablais/precipice/components/info"
+	"github.com/joshuablais/precipice/components/lighthouse"
 	"github.com/joshuablais/precipice/components/testimonials"
 	"github.com/joshuablais/precipice/components/titles"
 	"github.com/joshuablais/precipice/internal/config"
@@ -258,7 +259,20 @@ func IndexPage(cfg *config.Config) templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 8, "</div></section>")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 8, "</div><div class=\"container\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = lighthouse.LighthouseScores([]lighthouse.ScoreItem{
+				{Label: "Performance", Score: 100},
+				{Label: "Accessibility", Score: 100},
+				{Label: "Best Practices", Score: 100},
+				{Label: "SEO", Score: 100},
+			}).Render(ctx, templ_7745c5c3_Buffer)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 9, "</div></section>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}

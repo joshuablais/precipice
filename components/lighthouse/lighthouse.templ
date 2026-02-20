@@ -1,0 +1,144 @@
+package lighthouse
+
+type ScoreItem struct {
+	Label string
+	Score int
+}
+
+templ LighthouseScores(scores []ScoreItem) {
+	<div class="lighthouse-wrapper">
+		<div class="lighthouse-grid">
+			for _, s := range scores {
+				@ScoreRing(s.Label, s.Score, "small")
+			}
+		</div>
+		if len(scores) > 0 {
+			@ScoreRing(scores[0].Label, scores[0].Score, "large")
+		}
+	</div>
+}
+
+templ ScoreRing(label string, score int, size string) {
+	<div class={ "score-ring-wrapper", size }>
+		<svg class="score-svg" viewBox="0 0 120 120">
+			<circle
+				class="ring-bg"
+				cx="60"
+				cy="60"
+				r="54"
+				fill="none"
+				stroke="#333"
+				stroke-width="8"
+			></circle>
+			<circle
+				class="ring-fill"
+				cx="60"
+				cy="60"
+				r="54"
+				fill="none"
+				stroke="#0cce6b"
+				stroke-width="8"
+				stroke-linecap="round"
+				stroke-dasharray="339.292"
+				style={ templ.SafeCSS("--target-dash: " + dashOffset(score) + ";") }
+			></circle>
+		</svg>
+		<div class="score-text">{ intToStr(score) }</div>
+		<div class="score-label">{ label }</div>
+	</div>
+	<style type="text/css" media="screen">
+				
+.lighthouse-wrapper {
+    background: #1e1e1e;
+    padding: 2rem;
+    font-family: sans-serif;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+.lighthouse-grid {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* --- Ring Wrapper --- */
+.score-ring-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    position: relative;
+}
+
+.score-ring-wrapper.small {
+    width: 100px;
+}
+
+.score-ring-wrapper.large {
+    width: 200px;
+}
+
+/* --- SVG --- */
+.score-svg {
+    width: 100%;
+    height: auto;
+    transform: rotate(-90deg); /* start ring at top */
+}
+
+/* --- Animated fill ring --- */
+.ring-fill {
+    stroke-dashoffset: 339.292px; /* start at 0 (fully hidden) */
+    animation: fillRing 1.2s ease-out forwards;
+    /* delay slightly for visual polish */
+    animation-delay: 0.2s;
+}
+
+@keyframes fillRing {
+    from {
+        stroke-dashoffset: 339.292px;
+    }
+    to {
+        stroke-dashoffset: var(--target-dash);
+    }
+}
+
+/* --- Score number (centered over SVG) --- */
+.score-ring-wrapper {
+    position: relative;
+}
+
+.score-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -70%);
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #0cce6b;
+}
+
+.score-ring-wrapper.large .score-text {
+    font-size: 2.8rem;
+}
+
+/* --- Label below ring --- */
+.score-label {
+    text-align: center;
+    font-size: 0.85rem;
+    color: #ccc;
+    margin-top: 0.25rem;
+}
+
+.score-ring-wrapper.large .score-label {
+    font-size: 1.1rem;
+    color: #fff;
+    font-weight: 500;
+}
+
+		</style>
+}
