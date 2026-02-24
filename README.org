@@ -22,7 +22,7 @@ CSS has come a long way in the past 5 years, to the point in which we can replac
 ** Structure
 
 ** Roadmap
-*** TODO Components to build out
+*** Components to build out
 **** TODO Form
 **** TODO cards
 **** TODO dropdown (nav)
