@@ -1,0 +1,8 @@
+#+title: Agents
+
+* Note our project tree
+* We use the following stack:
+- go-templ from html templating
+- vanilla CSS in-line for the css of components.
+
+

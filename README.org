@@ -27,9 +27,6 @@ CSS has come a long way in the past 5 years, to the point in which we can replac
 **** TODO cards
 **** TODO dropdown (nav)
 **** STRT Pricing
-:LOGBOOK:
-CLOCK: [2026-02-19 Thu 08:51]
-:END:
 **** TODO Alert
 **** TODO dialogue (modal)
 **** TODO spinner
