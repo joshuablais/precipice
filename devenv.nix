@@ -14,6 +14,7 @@
   packages = with pkgs; [
     # Build
     just
+    air
     esbuild
 
     # Go tooling (the difference between amateur and master)
@@ -22,6 +23,7 @@
     gotools # goimports, etc.
     go-tools # staticcheck
     delve # debugger
+    templ
   ];
 
   # ── Languages ──────────────────────────────────────────────────────────────
