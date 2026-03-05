@@ -3,10 +3,17 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    devenv.url = "github:cachix/devenv";
+    devenv.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs =
-    { self, nixpkgs }:
+    {
+      self,
+      nixpkgs,
+      devenv,
+      ...
+    }@inputs:
     let
       supportedSystems = [
         "x86_64-linux"
@@ -21,31 +28,9 @@
           pkgs = nixpkgs.legacyPackages.${system};
         in
         {
-          default = pkgs.mkShell {
-            buildInputs = with pkgs; [
-              # Core
-              go
-              templ
-
-              # Build
-              just
-              air
-              esbuild
-
-              # Go tooling (the difference between amateur and master)
-              gopls
-              golangci-lint
-              gotools # goimports, etc.
-              go-tools # staticcheck
-              delve # debugger
-            ];
-
-            shellHook = ''
-              export GOFLAGS="-tags=dev"
-              echo "⛰ Precipice Development Environment"
-              echo "  just dev    - live reload"
-              echo "  just build  - production build"
-            '';
+          default = devenv.lib.mkShell {
+            inherit inputs pkgs;
+            modules = [ ./devenv.nix ];
           };
         }
       );
