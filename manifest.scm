@@ -6,7 +6,6 @@
              (gnu packages golang-xyz)
              (gnu packages web)
              (gnu packages rust-apps)
-             (renaissance packages go)
              (renaissance packages air)
              )
 
